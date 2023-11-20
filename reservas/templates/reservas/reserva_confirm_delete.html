@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block center %}
+
+<section class="py-5">
+  <div class="container px-5">
+      <div class="bg-light rounded-4 py-5 px-4 px-md-5">
+          <div class="text-center mb-5">                
+              <h1 class="fw-bolder">FINECAP 2023</h1>
+              <p class="lead fw-normal text-muted mb-0">Lista de reservas</p>
+          </div>
+<div class="text-center mb-5"> 
+
+
+<h3>Por favor, confirme a ação.</h3>
+<form method="post">
+  {% csrf_token %}
+    <p>Realmente tem absoluta certeza de que deseja excluir a reserva "{{ object }}"?</p>
+    {{ form }}
+  <button type="submit" class="btn btn-danger">Confirmar</button>
+</form>
+
+
+</div>
+</div>
+</div>
+
+</section>
+{% endblock %}

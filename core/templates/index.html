@@ -1,0 +1,266 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block center %}
+    <section id="hero" class="d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+            <h1>TRIUMPH: Explore a vida em alto estilo</h1>
+            <h2>Explore nossa cuidadosamente selecionada coleção e descubra a fusão ideal entre desempenho e elegância sobre duas rodas.
+               Não apenas oferecemos motocicletas, proporcionamos uma experiência única e confiável.</h2>
+            <div class="d-flex justify-content-center justify-content-lg-start">
+              <a href="#about" class="btn-get-started scrollto">Nossa coleção</a>
+              <a href="" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Assistir Vídeo</span></a>
+            </div>
+          </div>
+          <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+            <img src="{% static 'assets/img/mt1.png' %}" class="img-fluid animated" alt="">
+          </div>
+        </div>
+      </div>
+    </section>
+<!--=Empresas=-->
+    <main id="main">
+
+      <section id="clients" class="clients section-bg">
+        <div class="container">
+  
+          <div class="row" data-aos="zoom-in">
+  
+            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+              <img src="{% static 'assets/img/clients/Logo-kawasaki.png' %}" class="img-fluid" alt="">
+            </div>
+  
+            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+              <img src="{% static 'assets/img/clients/Logo-yamaha.png' %}" class="img-fluid" alt="">
+            </div>
+  
+            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+              <img src="{% static 'assets/img/clients/Logo-honda.png' %}" class="img-fluid" alt="">
+            </div>
+  
+            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+              <img src="{% static 'assets/img/clients/Logo-bmw.png' %}" class="img-fluid" alt="">
+            </div>
+  
+            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+              <img src="{% static 'assets/img/clients/Logo-harley.png' %}" class="img-fluid" alt="">
+            </div>
+  
+            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+              <img src="{% static 'assets/img/clients/Logo-suzuki.png' %}" class="img-fluid" alt="">
+            </div>
+  
+          </div>
+  
+        </div>
+      </section>
+      
+      {% if messages %}
+      <div class="messages">
+     {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+     {{ message }}
+     </div>
+    {% endfor %}
+    </div>
+    {% endif %}
+
+<!--Sobre-->
+<!--Sobre-->
+<!--Sobre-->
+<!--Sobre-->
+<!--Sobre-->
+  <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Sobre a Triumph</h2>
+        </div>
+
+        <div class="row content">
+          <div class="col-lg-6">
+            <p>
+              Explore o universo emocionante das motocicletas seminovas na Triumph,
+              o seu destino online exclusivo para aquisição de diversas marcas renomadas.
+            </p>
+            <ul>
+              <li><i class="ri-check-double-line"></i> Diversidade de Marcas Renomadas</li>
+              <li><i class="ri-check-double-line"></i> Experiência de Compra Exclusiva</li>
+              <li><i class="ri-check-double-line"></i> Celebre a Essência Sobre Duas Rodas</li>
+            </ul>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            <p>
+              Navegue por uma seleção cuidadosamente curada que inclui modelos icônicos de marcas como Honda, Yamaha, Kawasaki,
+               Harley-Davidson, e muitas outras. Na Triumph, não apenas oferecemos uma variedade de motocicletas, mas também proporcionamos
+                uma experiência de compra única. Cada moto em nosso catálogo representa
+               a fusão perfeita entre a liberdade da estrada e a qualidade que você procura.
+            </p>
+            <a href="#" class="btn-learn-more">SAIBA MAIS +</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+<!--Dúvidas-->
+<!--Dúvidas-->
+<!--Dúvidas-->
+<!--Dúvidas-->
+<!--Dúvidas-->
+    <section id="why-us" class="why-us section-bg">
+      <div class="container-fluid" data-aos="fade-up">
+        <div class="row">
+          <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+            <div class="content">
+              <h3>Dúvidas Comuns sobre Motos na Triumph:<strong> Detalhes  para sua Jornada sobre Duas Rodas!</strong></h3>
+              <p>
+                Explore as respostas às perguntas mais frequentes sobre as motos da Triumph. Aqui, buscamos fornecer informações claras e abrangentes para tornar sua jornada de compra ainda mais tranquila.
+              </p>
+            </div>
+            <div class="accordion-list">
+              <ul>
+                <li>
+                  <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span> Como posso vender minha moto atual para a Triumph?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
+                    <p>
+                      Se você está interessado em vender sua moto atual, entre em contato conosco.
+                       Nossa equipe avaliará sua moto e discutirá as opções disponíveis para uma troca ou venda direta.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span> Como posso verificar a disponibilidade de uma moto específica? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
+                    <p>
+                      Você pode verificar a disponibilidade de uma moto em nosso site, navegando pela seção de estoque atualizado
+                       regularmente. Além disso, nossa equipe de atendimento está pronta para ajudar por meio do formulário de
+                        contato ou pelos dados fornecidos na página de contato.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span> Qual é a garantia oferecida nas motos seminovas? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                  <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
+                    <p>
+                      Cada moto seminova vem com uma garantia que varia de acordo com o modelo e ano de fabricação.
+                       Nossa equipe terá prazer em fornecer informações específicas sobre a garantia ao discutir as opções de compra.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" data-aos="zoom-in" data-aos-delay="150">&nbsp;
+            <img src="{% static 'assets/img/faq2.png' %}" class="img-fluid animated" alt="">
+          </div>
+        </div>
+      </div>
+    </section>
+<!--Race-->
+<!--Race-->
+<!--Race-->
+<!--Race-->
+<!--Race-->
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="row">
+          <div class="col-lg-9 text-center text-lg-start">
+            <h3>Triumph Race</h3>
+            <p> Explore a emoção da velocidade e a adrenalina das curvas com a Triumph Race,
+               uma corrida eletrizante disponível no YouTube. Sinta a potência das motocicletas
+                Triumph em competição, mergulhe no cenário de pistas desafiadoras e experimente
+                 a paixão pelo motociclismo em sua forma mais intensa.</p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="https://youtu.be/7Sd_56M8Apw?si=fTwKi6jCUl_5ouZZ">Assista Agora!</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section id="team" class="team section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Equipe</h2>
+          <p> A equipe responsável pelo desenvolvimento da "Triumph" é composta por dois
+             alunos do Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte
+              (IFRN): Felipe Osório e Kauan Nascimento. </p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="{% static 'assets/img/team/felipe.jpeg' %}" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Felipe Osório Bezerra</h4>
+                <span>Fundador</span>
+                <p>Estudante do 4º ano do IFRN, atualmente cursando o último ano de informática.</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="{% static 'assets/img/team/kauan.jpg' %}" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Kauan Nascimento Oliveira</h4>
+                <span>Co-fundador</span>
+                <p>Estudante do 4º ano do IFRN, atualmente cursando o último ano de informática.</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+
+ 
+        </div>
+
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {% endblock %}
+

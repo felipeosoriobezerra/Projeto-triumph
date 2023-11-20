@@ -1,0 +1,61 @@
+{%  extends 'base.html' %}
+
+{% block center %}
+<section class="py-5">
+    <div class="container px-5">
+        
+        <div class="bg-light rounded-4 py-5 px-4 px-md-5">
+            <div class="text-center mb-5">
+                
+                <h1 class="fw-bolder">FINECAP 2023</h1>
+                <p class="lead fw-normal text-muted mb-0">Faça sua reserva</p>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6">
+                  
+
+
+
+        <form method="post" id="contactForm" data-sb-form-api-token="API_TOKEN">
+ 
+        {% csrf_token %}
+
+
+        <div class="form-floating mb-3">
+                            
+            <p for="phone">Localização</p>
+            
+            {{ form.localizacao }}
+            <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+        </div>
+
+
+        <div class="form-floating mb-3">
+            
+            <p for="phone">Valor</p>
+            
+            {{ form.valor }}
+            <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+        </div>
+
+
+
+        <div class="d-none" id="submitSuccessMessage">
+            <div class="text-center mb-3">
+                <div class="fw-bolder">Form submission successful!</div>
+                To activate this form, sign up at
+                <br />
+                <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+            </div>
+        </div>
+       
+        <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+        
+        <div class="d-grid"><button type="submit" class="btn btn-primary">Enviar</button></div>
+    </form>
+</div>
+</div>
+</div>
+</div>
+</section>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block center %}
+
+
+
+
+
+
+
+<section class="py-5">
+
+    <div class="container px-5">
+        <div class="bg-light rounded-4 py-5 px-4 px-md-5">
+            <div class="text-center mb-5">                
+                <h1 class="fw-bolder">FINECAP 2023</h1>
+                <p class="lead fw-normal text-muted mb-0">Ficha de detalhes</p>
+            </div>
+  <div class="text-center mb-5"> 
+
+
+
+
+  
+    <br>
+    <br>   
+        <hr>
+        <div class="mb-3">
+            <h5>Nome da empresa:</h5>
+            <p>{{ object.nome_empresa }}</p>
+        </div>
+        
+        <div class="mb-3">
+            <hr>
+            <h5>Categoria da empresa</h5>
+            <p>{{ object.categoria_empresa }}</p>
+        </div>
+
+        <div class="mb-3">
+            <hr>
+            <h5>CNPJ</h5>
+            <p>{{ object.cnpj }}</p>
+        </div>
+
+        <div class="mb-3">
+            <hr>
+            <h5>Stand</h5>
+            <p>{{ object.stand }}</p>
+        </div>
+
+        <div class="mb-3">
+            <hr>
+            <h5>Situação</h5>
+            {% if object.quitado %}
+            <p>Quitado</p>
+            {% else %}
+            <p>Aguardando</p>
+            {% endif %}
+        </div>
+        <hr>
+
+
+        <a class="btn btn-dark btn-lg" href="{% url 'reservas:visualizar_reservas' %}">VOLTAR</a>
+    
+    </div>
+</div>
+</div>
+
+</section>
+{% endblock %}

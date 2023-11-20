@@ -1,0 +1,96 @@
+
+
+
+{% extends 'base.html' %}
+
+{% block center %}
+<section class="py-5">
+  <div class="container px-5">
+      <div class="bg-light rounded-4 py-5 px-4 px-md-5">
+          <div class="text-center mb-5">                
+              <h1 class="fw-bolder">FINECAP 2023</h1>
+              <p class="lead fw-normal text-muted mb-0">Lista de reservas</p>
+          </div>
+  <div class="text-center mb-5">   
+  {% if messages %}
+  <div class="messages">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+      {{ message }}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Localização</th>
+        <th>Preço</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        {% for object in object_list %}
+        <tr>
+          <td>{{ object.localizacao }}</td>
+          <td>R$ {{ object.valor }}</td>
+          <td>
+          <a href="{% url 'stands:editar_stand' object.id %}" class="btn btn-outline-primary">Editar</a>
+          <a href="{% url 'stands:remover_stand' object.id %}" class="btn btn-outline-danger">Deletar</a>   
+          </td>
+    
+        </tr>
+        {% endfor %}
+    
+    </tbody>
+  </table>
+  
+ 
+
+
+
+  {% if page_obj.has_other_pages %}
+  <nav>
+      <ul class="pagination justify-content-center">
+          {% if page_obj.has_previous %}
+              <li class="page-item">
+                  <a class="page-link" href="?page=1">
+                      Começo
+                  </a>
+              </li>
+              
+          {% endif %}
+
+          {% for page_number in page_obj.paginator.page_range %}
+
+              {% if page_number <= page_obj.number|add:3 and page_number >= page_obj.number|add:-3 %}
+                  {% if page_obj.number == page_number %}
+                      <li class="page-item active">
+                          <a class="page-link" href="?page={{ page_number }}">
+                              {{ page_number }}
+                          </a>
+                      </li>
+                  {% else %}
+                      <li class="page-item">
+                          <a class="page-link" href="?page={{ page_number }}">
+                              {{ page_number }}
+                          </a>
+                      </li>
+                  {% endif %}
+              {% endif %}
+          {% endfor %}
+
+          {% if page_obj.has_next %}
+              
+              <li class="page-item">
+                  <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
+                      Final
+                  </a>
+              </li>
+          {% endif %}
+      </ul>
+  </nav>
+{% endif %}
+{% endblock %}

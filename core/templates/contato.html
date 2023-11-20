@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block center %}
+<section id="contact" class="contact">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Contato</h2>
+        <p>Entre em contato conosco na Triumph Motos Seminovas para
+             uma experiência personalizada e suporte excepcional.
+              Estamos aqui para atender às suas dúvidas, fornecer 
+              informações detalhadas sobre nossos modelos e ajudar você a 
+              dar o próximo passo na jornada emocionante de possuir uma moto 
+              Triumph. Sinta-se à vontade para preencher o formulário de contato
+               abaixo ou utilizar nossas informações de telefone e email.</p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-lg-5 d-flex align-items-stretch">
+          <div class="info">
+            <div class="address">
+              <i class="bi bi-geo-alt"></i>
+              <h4>Localização:</h4>
+              <p>Água Nova, Rio Grande do Norte, Brasil</p>
+              <p>CEP:59995-000</p>
+            </div>
+
+            <div class="email">
+              <i class="bi bi-envelope"></i>
+              <h4>Email:</h4>
+              <p>triumph@example.com</p>
+            </div>
+
+            <div class="phone">
+              <i class="bi bi-phone"></i>
+              <h4>TELEFONE:</h4>
+              <p>+55 (84) 981460730</p>
+            </div>
+         
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15865.74401130299!2d-38.301996654925944!3d-6.206077200506777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7a4c992ded5e56f%3A0xa56f09d7a969b7ca!2s%C3%81gua%20Nova%2C%20RN%2C%2059995-000!5e0!3m2!1spt-BR!2sbr!4v1700411239835!5m2!1spt-BR!2sbr" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+          </div>
+
+        </div>
+
+    
+
+
+
+        <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+          <form action="https://api.staticforms.xyz/submit" method="post" role="form" class="php-email-form">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="name">Seu Nome</label>
+                <input type="text" name="name" class="form-control" id="name" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="name">Seu Email</label>
+                <input type="email" class="form-control" name="email" id="email" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="name">Título da mensagem</label>
+              <input type="text" class="form-control" name="subject" id="subject" required>
+            </div>
+            <div class="form-group">
+              <label for="name">Mensagem</label>
+              <textarea class="form-control" name="message" rows="10" required></textarea>
+            </div>
+           
+            <div class="text-center"><button type="submit">Enviar mensagem</button></div>
+
+            <input type="hidden" name="accessKey" value="de22adaf-22d7-4b5f-ad0d-0a56b2a6c82e">
+
+            <input type="hidden" name="redirectTo" value="http://127.0.0.1:8000/contato/">
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  {% endblock %}

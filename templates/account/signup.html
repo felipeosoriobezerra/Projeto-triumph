@@ -1,0 +1,133 @@
+{% load i18n %}
+{% load account socialaccount %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'assets/css/slogin.css' %}">  
+    <title>Triumph</title>
+    
+</head>
+<body>   
+
+    <main id="container">
+        <section id="login_form">
+            <div id="form_header">
+                <h1>Login</h1>
+                <i id="mode_icon" class="fa-solid fa-moon"></i>
+            </div>
+            <div id="social_media">
+                <a href="#">
+                    <img src="{% static 'assets/img/login-icons/facebook.png' %}" alt="">
+                </a>
+                <a href="#">
+                    <img src="{% static 'assets/img/login-icons/google.png' %}" alt="Google logo">
+                </a>
+                <a href="#">
+                    <img src="{% static 'assets/img/login-icons/github.png' %}" alt="">
+                </a>
+            </div>
+
+  
+    {% include "layouts/alerts.html" %}
+
+
+    <form class="login" method="POST" action="{% url 'account_signup' %}">
+      {% csrf_token %}
+
+
+
+      <div id="inputs">
+               
+        <div class="input-box">
+        <div class="form-group">
+          <label for="id_login">{% translate "Username:" %}</label>
+          <div class="input-field">
+          <i class="fa-solid fa-user"></i>
+          <div class="input-group">
+          <input type="text" name="username" class="form-control" id="id_username" placeholder="{% trans 'Nome de usuário' %}">
+          </div>
+        </div>
+        </div>
+      </div>
+
+
+
+      <div class="input-box">
+        <div class="form-group input-button">
+          <label for="id_email">{% trans "Email:" %}</label>
+          <div class="input-field">
+          <i class="fa-solid fa-user"></i>
+          <div class="input-group">
+          <input type="email" name="email" class="form-control" id="id_email" placeholder="{% trans 'Insira  seu  Email' %}">
+          </div>
+        </div>
+        </div>
+      </div>
+
+
+      <div class="input-box">
+        <div class="form-group input-button">
+          <label for="id_password1">{% trans "Senha:" %}</label>
+          <div class="input-field">
+          <i class="fa-solid fa-user"></i>
+          <div class="input-group">
+          <input id="show-password-button" type="password" name="password1" class="form-control" id="id_password1" placeholder="{% trans 'Sua senha' %}">
+          <div class="input-group-append">
+          </div>
+        </div>
+        </div>
+        </div>
+      </div>
+
+
+      <div class="input-box">
+        <div class="form-group input-button">
+          <label for="id_password2">{% trans "Confirme sua senha:" %}</label>
+          <div class="input-field">
+          <i class="fa-solid fa-user"></i>
+          <div class="input-group">
+            <input id="show-password-button" type="password" name="password2" class="form-control" id="id_password2" placeholder="{% trans 'Confirme sua senha' %}">
+        </div>
+        </div>
+        </div>
+      </div>
+
+
+
+
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+
+
+      <button type="submit" id="login_button"  >
+        {% translate "Cadastre-se" %}
+      </button>
+
+
+      <div id="forgot_password">
+        <p>Já possui cadastro?<a href="{% url 'account_login' %}">Login</a></p>
+      </div>
+       
+    </form>
+  </section>
+</main>
+<script type="text/javascript" src="{% static 'assets/js/scrilogin.js' %}"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
