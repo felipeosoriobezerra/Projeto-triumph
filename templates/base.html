@@ -37,20 +37,17 @@
           
           <nav id="navbar" class="navbar">
             <ul>
-              <li><a class="nav-link scrollto active" href="{% url 'reservas:visualizar_reservas' %}">Reservas</a></li>
-              <li><a class="nav-link scrollto" href="{% url 'stands:stands_visualizar' %}">Stands</a></li>
-              <li><a class="nav-link scrollto" href="{% url 'stands:stands_cadastro' %}">Cadastro de Stand</a></li>
-              <li><a class="nav-link scrollto" href="{% url 'reservas:cadastro_reserva' %}">Cadastro de Reserva</a></li>
+              <li><a class="nav-link scrollto" href="{% url 'motos:cadastrar_moto' %}">Cadastrar</a></li>
+              <li><a class="nav-link scrollto" href="{% url 'motos:catalogo' %}">Catálogo</a></li>
               <li><a class="nav-link scrollto" href="#team">Equipe</a></li>
               {% if request.user.is_anonymous %}
-              <div class="btn-group" role="group" aria-label="Entrar ou Cadastrar">
-                  <a href="{% url 'account_login' %}" class="btn btn-primary" type="button" data-trigger="login">
-                      <i class="fas fa-user" aria-hidden="true"></i> Entrar
-                  </a>
-                  <a href="{% url 'account_signup' %}" class="btn btn-primary" type="button">
-                      <i class="fas fa-user-plus" aria-hidden="true"></i> Cadastrar-se
-                  </a>
-              </div>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuário</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a style="color: black;" class="dropdown-item" href="{% url 'account_login' %}">Login</a>
+                    <a style="color: black;" class="dropdown-item" href="{% url 'account_signup' %}">Cadastrar</a>
+                </div>
+            </li>
               {% endif %}
               {% if user.is_authenticated %}
               <li class="dropdown"><a href="#"><span>@{{ request.user }}</span> <i class="bi bi-chevron-down"></i></a>
@@ -241,6 +238,9 @@
          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"
            integrity="sha512-0XDfGxFliYJPFrideYOoxdgNIvrwGTLnmK20xZbCAvPfLGQMzHUsaqZK8ZoH+luXGRxTrS46+Aq400nCnAT0/w=="
            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+           <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+           <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+           <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
                <script>
                  $(document).ready(function () {
                    $('.money').mask('0000,00', { reverse: true })

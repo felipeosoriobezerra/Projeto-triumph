@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block center %}
+
+    <style>
+      body {
+            background-color: #f8f9fa;
+            color: #495057;
+            margin-top: 100px;
+        }
+    
+        .card {
+            border: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-radius: 15px;
+            margin-bottom: 20px; /* Espaço entre os cards */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adiciona sombra aos cards */
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Aumenta sombra ao passar o mouse */
+        }
+        .card img {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .card-title {
+            font-size: 1rem; /* Tamanho do título do card */
+            font-weight: bold;
+        }
+        .card-body {
+            padding: 10px; /* Espaçamento interno do corpo do card */
+        }
+        .card-footer {
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            padding: 5px; /* Espaçamento interno do rodapé do card */
+        }
+
+        /* Responsividade */
+        @media (max-width: 576px) {
+            .category h2 {
+                font-size: 1.5rem;
+            }
+            .card-title {
+                font-size: 0.9rem; /* Reduzir tamanho do título em telas menores */
+            }
+        }
+        .card {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="text-center mt-4">Catálogo de Motos</h1>
+        <hr>
+        <div class="row mt-4">
+            {% for moto in object_list %}
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="{{ moto.imagem_1.url }}" class="card-img-top" alt="{{ moto.modelo }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ moto.marca }} {{ moto.modelo }}</h5>
+                        </div>
+                        <div class="card-footer">
+                            <small>Preço: R$ {{ moto.preco }}</small>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <br>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+{% endblock %}
