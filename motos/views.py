@@ -3,8 +3,9 @@ from .models import Moto, Marca
 from .forms import MotoForm, MarcaForm
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class MotoCreateView(CreateView):
+class MotoCreateView(LoginRequiredMixin, CreateView):
     model = Moto
     form_class = MotoForm
     template_name = 'cadastrar_moto.html'
@@ -14,7 +15,7 @@ class MotoListView(ListView):
     model = Moto
     template_name = 'catalogo.html'
 
-class CadastrarMarcaView(CreateView):
+class CadastrarMarcaView(LoginRequiredMixin, CreateView):
     model = Marca
     form_class = MarcaForm
     template_name = 'cadastrar_marca.html'
