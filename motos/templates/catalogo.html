@@ -14,7 +14,7 @@
             transition: transform 0.2s, box-shadow 0.2s;
             border-radius: 15px;
             margin-bottom: 20px; /* Espaço entre os cards */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adiciona sombra aos cards */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .card:hover {
             transform: scale(1.05);
@@ -61,7 +61,7 @@
         <hr>
         <div class="row mt-4">
             {% for moto in object_list %}
-                <div class="col-md-3">
+                <div style="margin-bottom: 30px;" class="col-md-3">
                     <div class="card">
                         <img src="{{ moto.imagem_1.url }}" class="card-img-top" alt="{{ moto.modelo }}">
                         <div class="card-body">

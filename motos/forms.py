@@ -23,14 +23,9 @@ class MotoForm(forms.ModelForm):
             'imagem_3':  ClearableFileInput(attrs={'class': 'form-control'}),
             'imagem_4':  ClearableFileInput(attrs={'class': 'form-control'}),
             'imagem_5':  ClearableFileInput(attrs={'class': 'form-control'}),
+            'preco' : forms.TextInput(attrs={'class': 'money form-control'})
         }
 
-        preco = forms.DecimalField(
-    widget=forms.TextInput(attrs={
-        'class': 'money form-control',
-        'placeholder': 'Preço'
-    }), localize=True
-)
 
     def __init__(self, *args, **kwargs):
         super(MotoForm, self).__init__(*args, **kwargs)
@@ -41,4 +36,8 @@ class MotoForm(forms.ModelForm):
         if ano < 1000 or ano > 9999:
             raise forms.ValidationError('O ano deve ter 4 dígitos.')
         return ano
+
+    def clean_preco(self):
+        preco = self.cleaned_data["Preço"]
+        return preco.replace(",", ".")
     
