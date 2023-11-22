@@ -30,13 +30,16 @@ class MotoUpdateView(generic.UpdateView):
     template_name = "cadastrar_moto.html"
    
     def form_valid(self, form):
-        messages.success(self.request, "Cadastro Atualizado!")
+        messages.success(self.request, "Cadastro Atualizado")
         return super().form_valid(form)
     
 class MotoDeleteView(views.SuccessMessageMixin,generic.DeleteView):
     model = Moto
     success_url = reverse_lazy("motos:visualizar_motos")
-    success_message = "Cadastro deletado!"
+
+    def form_valid(self, form):
+        messages.error(self.request, "Cadastro cancelado")
+        return super().form_valid(form)
 
 class CadastrarMarcaView(generic.CreateView):
     model = Marca

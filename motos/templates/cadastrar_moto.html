@@ -76,7 +76,50 @@
     <hr>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div class="mb-3">
+            <label for="nome" class="form-label">Modelo:</label>
+            {{ form.modelo }}
+        </div>
+
+        <div class="mb-3">
+            <label for="nome"  class="form-label">Marca:</label>
+            {{ form.marca }}
+        </div>
+
+        <div class="mb-3">
+            <label for="nome"  class="form-label">Preço:</label>
+            {{ form.preco }}
+        </div>
+
+        <div class="mb-3">
+            <label for="nome"  class="form-label">Ano:</label>
+            {{ form.ano }}
+        </div>
+
+        <div class="mb-3">
+            <label for="nome"  class="form-label">Imagem 1:</label>
+            {{ form.imagem_1 }}
+        </div>
+
+        <div class="mb-3">
+            <label for="nome"  class="form-label">Imagem 2:</label>
+            {{ form.imagem_2 }}
+        </div>
+
+        <div class="mb-3">
+            <label for="nome"  class="form-label">Imagem 3:</label>
+            {{ form.imagem_3 }}
+        </div>
+
+        <div class="mb-3">
+            <label for="nome"  class="form-label">Imagem 4:</label>
+            {{ form.imagem_4 }}
+        </div>
+
+        <div class="mb-3">
+            <label for="nome"  class="form-label">Imagem 5:</label>
+            {{ form.imagem_5 }}
+        </div>
 
         <button type="submit">Salvar</button>
     </form>
