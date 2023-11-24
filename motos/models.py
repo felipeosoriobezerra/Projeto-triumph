@@ -10,12 +10,13 @@ class Marca(models.Model):
 
 class Moto(models.Model):
     modelo = models.CharField(max_length=255)
+    desc = models.CharField(max_length=255, null=True, blank=True)
     marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
-    preco = models.DecimalField(decimal_places=2,max_digits=9)
+    preco = models.DecimalField(max_digits=9, decimal_places=2)
     ano = models.IntegerField(
         validators=[
-            MinValueValidator(1000),
-            MaxValueValidator(9999)
+            MinValueValidator(1960),
+            MaxValueValidator(2025)
         ]
     )
     imagem_1 = models.ImageField(upload_to='motos/', blank=True, null=True)

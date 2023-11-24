@@ -77,9 +77,24 @@
     <hr>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            <strong>Erro no formulário:</strong>
+            {% for field, error_list in form.errors.items %}
+                {% for error in error_list %}
+                {{ error }}
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endif %}
         <div class="mb-3">
             <label for="nome" class="form-label">Modelo:</label>
             {{ form.modelo }}
+        </div>
+
+        <div class="mb-3">
+            <label for="nome" class="form-label">Descrição:</label>
+            {{ form.desc }}
         </div>
 
         <div class="mb-3">
