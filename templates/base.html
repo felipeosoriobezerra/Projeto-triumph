@@ -41,7 +41,14 @@
 
       <nav id="navbar" class="navbar">
         <ul>
+
+          {% if user.is_superuser %}
+          <li><a class="nav-link scrollto" href="{% url 'users:lista_usuarios' %}">Usuários</a></li>
+          {% endif %}
+          {% if request.pode_cadastrar or user.is_superuser %}
           <li><a class="nav-link scrollto" href="{% url 'motos:cadastrar_moto' %}">Cadastrar</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'motos:visualizar_motos' %}">Motos</a></li>
+          {% endif %}
           <li><a class="nav-link scrollto" href="{% url 'motos:catalogo' %}">Catálogo</a></li>
           {% if request.user.is_anonymous %}
           <li class="nav-item dropdown">

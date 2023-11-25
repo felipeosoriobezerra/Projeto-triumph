@@ -65,8 +65,7 @@ MIDDLEWARE = (
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-
-    # Add the account middleware:
+    "users.middleware.FuncionarioMiddleware",
     "allauth.account.middleware.AccountMiddleware",
 )
 

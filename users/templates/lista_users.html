@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block center %}
+
+<style>
+    body {
+        margin-top: 100px;
+    }
+
+    .btn-group .btn {
+        margin-right: 5px;
+    }
+</style>
+
+<body>
+    <div class="container mt-4">
+        <h3 class="mb-4">Lista de Usuários</h3>
+
+        <table class="table table-striped mt-3">
+            <thead class="thead-primary">
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Grupo Atual</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for object in object_list %}
+                <tr>
+                    <td>{{ object.username }}</td>
+                    <td>{{ object.email }}</td>
+                    <td>
+                        {% for group in object.groups.all %}
+                           <p>Este usuário é um Funcionário.</p>
+                        {% empty %}
+                            {% if object.is_superuser %}
+                                <p>Este usuário é um Administrador.</p>
+                            {% else %}
+                                <p>Não pertence a nenhum grupo.</p>
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                        
+
+                    <td>
+                        <div class="btn-group">
+                            <a href="{% url 'users:delete_users' object.id %}" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash"></i> Excluir
+                            </a>
+                            {% if not object.groups.exists %}
+                            <form method="post" action="{% url 'users:atualizar_grupo_funcionario' object.id %}" class="d-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-success btn-sm">
+                                    Tornar Funcionário
+                                </button>
+                            </form>
+                            {% else %}
+                                {% for group in object.groups.all %}
+                                    {% if group.name == "Funcionário" %}
+                                        <form method="post" action="{% url 'users:remover_grupo_funcionario' object.id %}" class="d-inline">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                Remover do grupo
+                                            </button>
+                                        </form>
+                                    {% else %}
+                                        <form method="post" action="{% url 'users:atualizar_grupo_funcionario' object.id %}" class="d-inline">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-success btn-sm">
+                                                Tornar Funcionário
+                                            </button>
+                                        </form>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">
+                        <p>Não existem usuários cadastrados.</p>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+{% endblock %}

@@ -16,7 +16,7 @@ class MarcaForm(forms.ModelForm):
         }
 
 class MotoForm(forms.ModelForm):
-     preco = forms.DecimalField(widget=forms.TextInput(attrs={"class": "money form-control"}))
+     preco = forms.DecimalField(widget=forms.TextInput(attrs={"class": "form-control"}))
      ano = forms.IntegerField(widget=forms.TextInput(attrs={"class": "form-control"}))
 
      class Meta:

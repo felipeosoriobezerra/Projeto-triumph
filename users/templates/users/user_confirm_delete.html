@@ -2,23 +2,25 @@
 {% block center %}
 
 <style>
-
 .button {
   color: white;
   background-color: red;
 }
-.link{
-margin-top: 10px;
+
+.link {
+     
+    margin-top: 10px;
         color: #3498db;
         text-decoration: none;
-      }
+}
+
 </style>
 
 <section class="py-5">
   <div class="container px-5">
       <div class="bg-light rounded-4 py-5 px-4 px-md-5">
           <div class="text-center mb-5">                
-              <h1 class="fw-bolder">Definir cadastro</h1>
+              <h1 class="fw-bolder">Definir Usuário</h1>
           </div>
 <div class="text-center mb-5"> 
 
@@ -26,12 +28,12 @@ margin-top: 10px;
 <h3>Por favor, confirme a ação.</h3>
 <form method="post">
   {% csrf_token %}
-    <p>Realmente tem absoluta certeza de que deseja excluir o cadastro "{{ object }}"?</p>
+    <p>Realmente tem absoluta certeza de que deseja excluir o Usuário "{{ object }}"?</p>
     {{ form }}
   <button type="submit" class="btn btn-danger">Confirmar</button>
 </form>
 <div class="link">
-<a href="{% url 'motos:visualizar_motos' %}" class="forgot-password-link">Voltar para a lista de motos</a>
+<a href="{% url 'users:lista_usuarios' %}" class="forgot-password-link">Voltar para a lista de usuários</a>
 </div>
 
 </div>
