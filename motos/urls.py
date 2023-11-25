@@ -12,4 +12,5 @@ urlpatterns = [
     path('visualizar_motos/', Moto2ListView.as_view(), name='visualizar_motos'),
     path('update/<int:pk>/', MotoUpdateView.as_view(), name="editar"),
     path('remover_motos/<int:pk>/', MotoDeleteView.as_view(), name="remover_motos"),
+    path('detalhar_motos/<int:pk>/', MotoDetailView.as_view(), name='detalhar_motos'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

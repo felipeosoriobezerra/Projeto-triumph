@@ -1,8 +1,7 @@
-from django.views.generic import ListView, DetailView, CreateView
-from .models import Moto, Marca
-from .forms import MotoForm, MarcaForm
+from django.views.generic import *
+from .models import *
+from .forms import *
 from django.urls import reverse_lazy
-from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from django.contrib import messages
@@ -26,7 +25,7 @@ class MotoListView(generic.ListView):
 class Moto2ListView(generic.ListView):
     model = Moto
     template_name = "visualizar_motos.html"
-    paginate_by = 4
+    paginate_by = 6
 
 class MotoUpdateView(generic.UpdateView):
     model = Moto
@@ -45,6 +44,10 @@ class MotoDeleteView(views.SuccessMessageMixin,generic.DeleteView):
     def form_valid(self, form):
         messages.error(self.request, "Cadastro cancelado")
         return super().form_valid(form)
+    
+class MotoDetailView(generic.DetailView):
+    model = Moto
+    template_name = "detalhar_motos.html"  
 
 class CadastrarMarcaView(generic.CreateView):
     model = Marca

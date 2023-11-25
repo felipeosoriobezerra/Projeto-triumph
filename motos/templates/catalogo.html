@@ -2,121 +2,140 @@
 {% load static %}
 {% block center %}
 
-    <style>
-      body {
-            background-color: #f8f9fa;
-            color: #495057;
-            margin-top: 100px;
-        }
-    
-        .card {
-            border: none;
-            transition: transform 0.2s, box-shadow 0.2s;
-            border-radius: 15px;
-            margin-bottom: 20px; /* Espaço entre os cards */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Aumenta sombra ao passar o mouse */
-        }
-        .card img {
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-        }
-        .card-title {
-            font-size: 1rem; /* Tamanho do título do card */
-            font-weight: bold;
-        }
-        .card-body {
-            padding: 10px; /* Espaçamento interno do corpo do card */
-        }
-        .card-footer {
-            text-align: center;
-            background-color: #007bff;
-            color: #fff;
-            border-bottom-left-radius: 15px;
-            border-bottom-right-radius: 15px;
-            padding: 5px; /* Espaçamento interno do rodapé do card */
-        }
+<style>
+  body {
+    background-color: #f8f9fa;
+    color: #495057;
+    margin-top: 100px;
+  }
 
-        /* Responsividade */
-        @media (max-width: 576px) {
-            .category h2 {
-                font-size: 1.5rem;
-            }
-            .card-title {
-                font-size: 0.9rem; /* Reduzir tamanho do título em telas menores */
-            }
-        }
-        .card {
-            height: 100%;
-        }
-    </style>
-</head>
+  .card {
+    border: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 15px;
+    margin-bottom: 20px;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+  }
+
+  .card img {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+
+  .card-title {
+    font-size: 1rem;
+
+    font-weight: bold;
+  }
+
+  .card-body {
+    padding: 10px;
+
+  }
+
+  .card-footer {
+    text-align: center;
+    background-color: #007bff;
+    color: #fff;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 5px;
+
+  }
+
+
+  @media (max-width: 576px) {
+    .category h2 {
+      font-size: 1.5rem;
+    }
+
+    .card-title {
+      font-size: 0.9rem;
+
+    }
+  }
+
+  .card {
+    height: 100%;
+  }
+
+</style>
+
 <body>
 
-    <div class="container">
-        <h1 class="text-center mt-4">Catálogo de Motos</h1>
-        <hr>
-        <div class="row mt-4">
-            {% for moto in object_list %}
-                <div style="margin-bottom: 30px;" class="col-md-3">
-                    <div class="card">
-                        <img src="{{ moto.imagem_1.url }}" class="card-img-top" alt="{{ moto.modelo }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ moto.modelo }}</h5>
-                            <p style="font-size: 12px;" class="card-text text-uppercase font-weight-bold"><strong><i>{{ moto.marca }}</i></strong></p>
-                        </div>
-                        <div class="card-footer">
-                            <small>Preço: R$ {{ moto.preco }}</small>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
+  <div class="container">
+    <h1 class="text-center mt-4">Galeria de Motos</h1>
+    <hr>
+    <div class="row mt-4">
+      {% for moto in object_list %}
+      <div style="margin-bottom: 30px;" class="col-md-3">
+        <div class="card">
+          <img src="{{ moto.imagem_1.url }}" class="card-img-top" alt="{{ moto.modelo }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ moto.modelo }}</h5>
+            <p style="font-size: 12px;" class="card-text text-uppercase font-weight-bold"><strong><i>{{ moto.marca }}</i></strong></p>
+          </div>
+          <div class="card-footer">
+            <small>Preço: R$ {{ moto.preco }}</small>
+            <br>
+          </div>
         </div>
+      </div>
+      {% endfor %}
     </div>
+    
+  </div>
 
-    {% if page_obj.has_other_pages %}
+
+
+  {% if page_obj.has_other_pages %}
   <nav>
     <ul class="pagination justify-content-center">
 
       {% if page_obj.has_previous %}
-        <li class="page-item">
-          <a class="page-link" href="?page=1" aria-label="Começo">
-            <span aria-hidden="true">&laquo;&laquo;</span>
-          </a>
-        </li>
+      <li class="page-item">
+        <a class="page-link" href="?page=1" aria-label="Começo">
+          <span aria-hidden="true">&laquo;&laquo;</span>
+        </a>
+      </li>
       {% endif %}
 
       {% for page_number in page_obj.paginator.page_range %}
-        {% if page_number <= page_obj.number|add:3 and page_number >= page_obj.number|add:-3 %}
-          {% if page_obj.number == page_number %}
-            <li class="page-item active">
-              <span class="page-link">{{ page_number }}</span>
-            </li>
-          {% else %}
-            <li class="page-item">
-              <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
-            </li>
-          {% endif %}
+      {% if page_number <= page_obj.number|add:3 and page_number >= page_obj.number|add:-3 %}
+        {% if page_obj.number == page_number %}
+        <li class="page-item active">
+          <span class="page-link">{{ page_number }}</span>
+        </li>
+        {% else %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+        </li>
         {% endif %}
-      {% endfor %}
+        {% endif %}
+        {% endfor %}
 
-      {% if page_obj.has_next %}
+        {% if page_obj.has_next %}
         <li class="page-item">
           <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Final">
             <span aria-hidden="true">&raquo;&raquo;</span>
           </a>
         </li>
-      {% endif %}
+        {% endif %}
 
     </ul>
   </nav>
-{% endif %}
-<br>
+  {% endif %}
+  <br>
 
 </body>
+
 </html>
 
 {% endblock %}

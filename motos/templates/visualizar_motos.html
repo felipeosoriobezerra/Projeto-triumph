@@ -1,99 +1,105 @@
 {% extends 'base.html' %}
 
 <style>
-h1 {
-  text-align: center;
-}
+  section {
+    display: flex;
+    justify-content: center;
+  }
+
+  h1 {
+    text-align: center;
+  }
 </style>
 
 {% block center %}
 <section class="py-5">
   <div class="container px-5">
     <div class="bg-light rounded-4 py-5 px-4 px-md-5">
-      <div class="text-center mb-5">                
+      <div class="text-center mb-5">
         <h1>Lista de cadastros</h1>
         <hr>
       </div>
 
       {% if messages %}
       <div class="messages">
-          {% for message in messages %}
-  
-          {% if messages.warning %}
-          <div style="text-align: center;" class="alert alert-danger{{ message.tags }}">
-              {{ message }}
-          </div>
-          {% else %}
-          <div style="text-align: center;" class="alert alert-{{ message.tags }}">
-              {{ message }}
-          </div>
-          {% endif %}
-  
-          {% endfor %}
+        {% for message in messages %}
+
+        {% if messages.warning %}
+        <div style="text-align: center;" class="alert alert-danger{{ message.tags }}">
+          {{ message }}
+        </div>
+        {% else %}
+        <div style="text-align: center;" class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+        {% endif %}
+
+        {% endfor %}
       </div>
       {% endif %}
 
-<div class="table-responsive">
-  <table class="table table-bordered table-fixed">
-      <thead>
-          <tr>
-            <th class="text-center" style="width: 25%;">Modelo</th>
-            <th class="text-center" style="width: 25%;">Marca</th>
-            <th class="text-center" style="width: 50%;">Ações</th>
-          </tr>
-      </thead>
-      <tbody>
-          {% for moto in object_list %}
-          <tr>
+      <div class="table-responsive">
+        <table class="table table-bordered table-fixed">
+          <thead>
+            <tr>
+              <th class="text-center" style="width: 25%;">Modelo</th>
+              <th class="text-center" style="width: 25%;">Marca</th>
+              <th class="text-center" style="width: 50%;">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for moto in object_list %}
+            <tr>
               <td class="text-center">{{ moto.modelo }}</td>
               <td class="text-center">{{ moto.marca }}</td>
               <td class="text-center">
-                  <a style="margin-right: 20px;" href="{% url 'motos:editar' moto.id %}" class="btn btn-outline-primary">Editar</a>
-                  <a href="{% url 'motos:remover_motos' moto.id %}" class="btn btn-outline-danger">Deletar</a>
+                <a style="margin-right: 20px;" href="{% url 'motos:editar' moto.id %}"
+                  class="btn btn-outline-primary">Editar</a>
+                <a href="{% url 'motos:remover_motos' moto.id %}" class="btn btn-outline-danger">Deletar</a>
               </td>
-          </tr>
-          {% endfor %}
-      </tbody>
-  </table>
-</div>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
 
-{% if page_obj.has_other_pages %}
-<nav>
-  <ul class="pagination justify-content-center">
+      {% if page_obj.has_other_pages %}
+      <nav>
+        <ul class="pagination justify-content-center">
 
-    {% if page_obj.has_previous %}
-      <li class="page-item">
-        <a class="page-link" href="?page=1" aria-label="Começo">
-          <span aria-hidden="true">&laquo;&laquo;</span>
-        </a>
-      </li>
-    {% endif %}
-
-    {% for page_number in page_obj.paginator.page_range %}
-      {% if page_number <= page_obj.number|add:3 and page_number >= page_obj.number|add:-3 %}
-        {% if page_obj.number == page_number %}
-          <li class="page-item active">
-            <span class="page-link">{{ page_number }}</span>
-          </li>
-        {% else %}
+          {% if page_obj.has_previous %}
           <li class="page-item">
-            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+            <a class="page-link" href="?page=1" aria-label="Começo">
+              <span aria-hidden="true">&laquo;&laquo;</span>
+            </a>
           </li>
-        {% endif %}
+          {% endif %}
+
+          {% for page_number in page_obj.paginator.page_range %}
+          {% if page_number <= page_obj.number|add:3 and page_number >= page_obj.number|add:-3 %}
+            {% if page_obj.number == page_number %}
+            <li class="page-item active">
+              <span class="page-link">{{ page_number }}</span>
+            </li>
+            {% else %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+            </li>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Final">
+                <span aria-hidden="true">&raquo;&raquo;</span>
+              </a>
+            </li>
+            {% endif %}
+
+        </ul>
+      </nav>
       {% endif %}
-    {% endfor %}
-
-    {% if page_obj.has_next %}
-      <li class="page-item">
-        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Final">
-          <span aria-hidden="true">&raquo;&raquo;</span>
-        </a>
-      </li>
-    {% endif %}
-
-  </ul>
-</nav>
-{% endif %}
 
     </div>
   </div>
