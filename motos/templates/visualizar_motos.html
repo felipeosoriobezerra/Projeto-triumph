@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
 <style>
+
+  body {
+        color: #495057;
+    }
+
   section {
     display: flex;
     justify-content: center;
@@ -9,14 +14,16 @@
   h1 {
     text-align: center;
   }
+
 </style>
 
 {% block center %}
-<section class="py-5">
-  <div class="container px-5">
-    <div class="bg-light rounded-4 py-5 px-4 px-md-5">
+  
+<section>
+  <div class="container">
+    <div class="py-5">
       <div class="text-center mb-5">
-        <h1>Lista de cadastros</h1>
+        <h1>Lista de Cadastros</h1>
         <hr>
       </div>
 
@@ -40,7 +47,7 @@
 
       <div class="table-responsive">
         <table class="table table-bordered table-fixed">
-          <thead>
+          <thead class="thead-primary">
             <tr>
               <th class="text-center" style="width: 25%;">Modelo</th>
               <th class="text-center" style="width: 25%;">Marca</th>
@@ -54,8 +61,8 @@
               <td class="text-center">{{ moto.marca }}</td>
               <td class="text-center">
                 <a style="margin-right: 20px;" href="{% url 'motos:editar' moto.id %}"
-                  class="btn btn-outline-primary">Editar</a>
-                <a href="{% url 'motos:remover_motos' moto.id %}" class="btn btn-outline-danger">Deletar</a>
+                  class="btn btn-outline-primary btn-block">Editar</a>
+                <a href="{% url 'motos:remover_motos' moto.id %}" class="btn btn-outline-danger btn-block">Deletar</a>
               </td>
             </tr>
             {% endfor %}
@@ -104,4 +111,5 @@
     </div>
   </div>
 </section>
+
 {% endblock %}

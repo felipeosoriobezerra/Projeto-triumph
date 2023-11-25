@@ -57,6 +57,7 @@ class UsersListView(SuperuserRequiredMixin, generic.ListView):
     model = User
     ordering = ["name"]
     template_name = "lista_users.html"
+    paginate_by = 6
 
 class UserDeleteView(SuperuserRequiredMixin, generic.DeleteView):
     model = User
