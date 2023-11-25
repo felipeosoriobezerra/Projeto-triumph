@@ -175,9 +175,14 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script>
     $(document).ready(function(){
-    $('.money').mask('000.000,00', {reverse: true})
+    $('.money').mask('000.000.000', {reverse: true})
     })
+
+    $(document).ready(function(){
+      $('.ano').mask('0000', {reverse: true})
+      })
     </script>
+  
   {% endblock javascript %}
 </body>
 

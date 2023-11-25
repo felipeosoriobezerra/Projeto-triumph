@@ -16,8 +16,8 @@ class MarcaForm(forms.ModelForm):
         }
 
 class MotoForm(forms.ModelForm):
-     preco = forms.DecimalField(widget=forms.TextInput(attrs={"class": "form-control"}))
-     ano = forms.IntegerField(widget=forms.TextInput(attrs={"class": "form-control"}))
+     preco = forms.CharField(widget=forms.TextInput(attrs={"class": "money form-control"}))
+     ano = forms.IntegerField(widget=forms.TextInput(attrs={"class": "ano form-control"}))
 
      class Meta:
         model = Moto
@@ -38,4 +38,12 @@ class MotoForm(forms.ModelForm):
         if ano < 1960 or ano > 2025:
             raise forms.ValidationError('O ano deve ser válido, entre 1960 e 2025.')
         return ano 
+     
+     def clean_preco(self):
+        preco = self.cleaned_data["preco"]
+        return (preco.replace("." , "."))
+     
+     def clean_a(self):
+        ano = self.cleaned_data["ano"]
+        return (ano.replace())
     
