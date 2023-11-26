@@ -18,6 +18,8 @@ class MarcaForm(forms.ModelForm):
 class MotoForm(forms.ModelForm):
      preco = forms.CharField(widget=forms.TextInput(attrs={"class": "money form-control"}))
      ano = forms.IntegerField(widget=forms.TextInput(attrs={"class": "ano form-control"}))
+     preco_min = forms.DecimalField(label='Preço Mínimo', required=False, widget=forms.TextInput(attrs={"class": "money form-control"}))
+     preco_max = forms.DecimalField(label='Preço Máximo', required=False, widget=forms.TextInput(attrs={"class": "money form-control"}))
 
      class Meta:
         model = Moto
@@ -43,7 +45,18 @@ class MotoForm(forms.ModelForm):
         preco = self.cleaned_data["preco"]
         return (preco.replace("." , "."))
      
+     def clean_preco_min(self):
+        preco_min = self.cleaned_data.get('preco_min')
+        if preco_min is not None and preco_min < 0:
+            raise forms.ValidationError('O preço mínimo não pode ser negativo.')
+        return preco_min
+
+     def clean_preco_max(self):
+        preco_max = self.cleaned_data.get('preco_max')
+        if preco_max is not None and preco_max < 0:
+            raise forms.ValidationError('O preço máximo não pode ser negativo.')
+        return preco_max
+     
      def clean_a(self):
         ano = self.cleaned_data["ano"]
         return (ano.replace())
-    

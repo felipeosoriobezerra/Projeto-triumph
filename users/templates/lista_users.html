@@ -3,13 +3,13 @@
 
 <style>
 
+#breadcrumbs {
+  background-color: #f3f5fa;
+  padding: 20px 0;
+}
+
     h1 {
         text-align: center;
-    }
-
-    body {
-        margin-top: 100px;
-        color: #495057;
     }
 
     .btn-group .btn {
@@ -35,6 +35,17 @@
 </style>
 
 <body>
+
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+    
+          <ol>
+            <li><a href="{% url 'core:index' %}">Início</a></li>
+            <li>Usuários</li>
+          </ol>
+        </div>
+      </section>
+
     <div class="container mt-4">
         <h1>Lista de Usuários</h1>
         <hr>

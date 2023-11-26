@@ -1,14 +1,78 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load i18n %}
 {% block center %}
 
 <style>
-  body {
-    background-color: #f8f9fa;
-    color: #495057;
-    margin-top: 100px;
+
+#breadcrumbs {
+  background-color: #f3f5fa;
+  padding: 20px 0;
+}
+
+.card-img-top {
+    position: relative;
+    transition: filter 0.5s;
   }
+
+  .img-link:hover .card-img-top {
+    filter: blur(5px); /* Ajuste o valor conforme necessário para o efeito desejado */
+  }
+
+  .img-link {
+
+    position: relative;
+    display: inline-block;
+
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.5s;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: black;
+    padding: 8px;
+    border-radius: 15px;
+    text-align: center;
+  }
+
+  .img-link:hover .overlay {
+    opacity: 1;
+  }
+
+.filter-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .form-group {
+        margin-right: 20px;
+    }
+
+    .filter-label {
+        margin-right: 10px;
+    }
+
+    .filter-select {
+        padding: 6px;
+    }
+
+    .filter-button {
+        padding: 6px 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        align-self: flex-end;
+    }
 
   .card {
     border: none;
@@ -72,15 +136,70 @@
 
 <body>
 
+  <section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+      <ol>
+        <li><a href="{% url 'core:index' %}">Início</a></li>
+        <li>Coleção</li>
+      </ol>
+    </div>
+  </section>
+
   <div class="container">
-    <h1 class="text-center mt-4">Galeria de Motos</h1>
+    <h1 class="text-center mt-4">Coleção Triumph</h1>
     <hr>
+    
+    <div class="form-container">
+      <form method="get" action="{% url 'motos:catalogo' %}" class="filter-form">
+        <div class="form-group">
+          <label for="modelo" class="filter-label">Filtrar por Modelo:</label>
+          <input type="text" name="modelo" id="modelo" class="form-control" value="{{ request.GET.modelo }}">
+      </div>
+          <div class="form-group">
+              <label for="marca" class="filter-label">Filtrar por Marca:</label>
+              <select name="marca" id="marca" class="form-control filter-select">
+                  <option value="" {% if not marca_selecionada %}selected{% endif %}>Todas</option>
+                  {% for marca in marcas %}
+                      <option value="{{ marca.id }}" {% if marca.id|slugify == marca_selecionada %}selected{% endif %}>{{ marca.nome }}</option>
+                  {% endfor %}
+              </select>
+          </div>
+  
+          <div class="form-group">
+              <label for="preco_min" class="filter-label">Preço Mínimo:</label>
+              <div class="input-group">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text">R$</span>
+                  </div>
+                  <input type="text" name="preco_min" id="preco_min" class="form-control money" value="{{ request.GET.preco_min }}">
+              </div>
+          </div>
+  
+          <div class="form-group">
+              <label for="preco_max" class="filter-label">Preço Máximo:</label>
+              <div class="input-group">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text">R$</span>
+                  </div>
+                  <input type="text" name="preco_max" id="preco_max" class="form-control money" value="{{ request.GET.preco_max }}">
+              </div>
+          </div>
+  
+          <button type="submit" class="btn btn-primary filter-button">Filtrar</button>
+      </form>
+  </div>
+  
+
     <div class="row mt-4">
       {% for moto in object_list %}
       <div style="margin-bottom: 30px;" class="col-md-3">
 
         <div class="card">
-          <img src="{{ moto.imagem_1.url }}" class="card-img-top" alt="{{ moto.modelo }}">
+          <a href="{% url 'motos:detalhar_motos' moto.id %}" class="img-link">
+            <img src="{{ moto.imagem_1.url }}" class="card-img-top" alt="{{ moto.modelo }}">
+            <div class="overlay">Detalhar</div>
+          </a>
           <div class="card-body">
             <h5 class="card-title">{{ moto.modelo }}</h5>
             <p style="font-size: 12px;" class="card-text text-uppercase font-weight-bold"><strong><i>{{ moto.marca }}</i></strong></p>
@@ -89,7 +208,6 @@
             <small>Preço: R$ {{ moto.preco }}</small>
             <br>
           </div>
-          <a class="btn btn-outline-dark mt-auto" href="{% url 'motos:detalhar_motos' moto.id %}">Saiba +</a>
         </div>
       </div>
       {% endfor %}

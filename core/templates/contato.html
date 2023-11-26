@@ -1,17 +1,32 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block center %}
+
 <style>
-  body {
-    margin-top: 60px;
-  }
+
+#breadcrumbs {
+        background: #f3f5fa;
+        padding: 20px 0;
+    
+    }
+    
 </style>
+
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+
+    <ol>
+      <li><a href="{% url 'core:index' %}">Início</a></li>
+      <li><a href="{% url 'core:contato' %}"></a>Contato</li>
+    </ol>
+  </div>
+</section>
+
 <section id="contact" class="contact">
-    <div class="container" data-aos="fade-up">
+    <div class="container">
 
       <div class="section-title">
-        <h2>Contato</h2>
+        <h2 marg>Contato</h2>
         <p>Entre em contato conosco na Triumph Motos Seminovas para
              uma experiência personalizada e suporte excepcional.
               Estamos aqui para atender às suas dúvidas, fornecer 

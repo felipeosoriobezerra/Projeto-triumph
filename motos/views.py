@@ -21,7 +21,33 @@ class MotoListView(generic.ListView):
     model = Moto
     template_name = 'catalogo.html'
     paginate_by = 16
-   
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        modelo = self.request.GET.get('modelo')
+        marca_id = self.request.GET.get('marca', None)
+        preco_min = self.request.GET.get('preco_min')
+        preco_max = self.request.GET.get('preco_max')
+
+        if modelo:
+            queryset = queryset.filter(modelo__icontains=modelo)
+        
+        if marca_id:
+            queryset = queryset.filter(marca_id=marca_id)
+
+        if preco_min:
+            queryset = queryset.filter(preco__gte=preco_min)
+
+        if preco_max:
+            queryset = queryset.filter(preco__lte=preco_max)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['marcas'] = Marca.objects.all()
+        context['marca_selecionada'] = self.request.GET.get('marca', None)
+        return context
 
 class Moto2ListView(FuncionarioPermission, generic.ListView):
     model = Moto

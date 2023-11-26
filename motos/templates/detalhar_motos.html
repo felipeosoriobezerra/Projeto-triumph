@@ -1,23 +1,73 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block center %}
+
+<style>
+
+#breadcrumbs {
+  background-color: #f3f5fa;
+  padding: 20px 0;
+}
+
+
+.portfolio-details-slider img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-info {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.portfolio-info h3 {
+  color: #333;
+}
+
+.portfolio-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.portfolio-info li {
+  margin-bottom: 10px;
+}
+
+.portfolio-description {
+  margin-top: 20px;
+}
+
+.portfolio-description h2 {
+  color: #333;
+}
+
+.portfolio-description p {
+  color: #666;
+}
+
+</style>
+
 <main id="main">
 
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
 
         <ol>
-          <li><a href="http://127.0.0.1:8000/">Início</a></li>
+          <li><a href="{% url 'core:index' %}">Início</a></li>
+          <li><a href="{% url 'motos:catalogo' %}">Coleção</a></li>
           <li>Detalhes</li>
         </ol>
-        <h2>Especificações da moto</h2>
-
       </div>
     </section>
-
-    <section id="portfolio-details" class="portfolio-details">
+    
       <div class="container">
-
+        <h1 class="text-center mt-4">Detalhes da {{ moto.modelo }}</h1>
+      <hr>
+      <section id="portfolio-details" class="portfolio-details">
         <div class="row gy-4">
 
           <div class="col-lg-8">
@@ -56,11 +106,11 @@
                 <li><strong>Modelo</strong>: {{ moto.modelo }}</li>
                 <li><strong>Marca</strong>: {{ moto.marca }}</li>
                 <li><strong>Ano de fabricação</strong>: {{ moto.ano }}</li>
-                <li><strong>Project URL</strong>: {{ moto.preco }}</a></li>
+                <li><strong>Preço</strong>: R$ {{ moto.preco }}</a></li>
               </ul>
             </div>
             <div class="portfolio-description">
-              <h2>Descrição Completa</h2>
+              <h2>Descrição</h2>
               <p>
                 {{ moto.desc }}
               </p>

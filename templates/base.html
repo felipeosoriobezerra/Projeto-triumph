@@ -34,6 +34,8 @@
 </head>
 
 <body>
+
+  
   <!--Cabeçalho-->
   <header id="header" class="fixed-top header-inner-pages">
     <div class="container d-flex align-items-center">
@@ -62,37 +64,32 @@
           {% endif %}
           {% if user.is_authenticated %}
           <li><a class="nav-link scrollto" href="{% url 'core:contato' %}">Contato</a></li>
-          <li class="dropdown"><a href="#"><span>@{{ request.user }}</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">{{ request.user.email }}</a></li>
-              <li><a style="margin-left: 50px; margin-bottom: 5px;" href="{% url 'account_change_password' %}"><i>Alterar senha</i></a></li>
-              <li>
-
-                {% if user.is_authenticated %}
-                <form style="text-align: center;" method="post" action="{% url 'account_logout' %}">
-                  {% csrf_token %}
-                  {% if redirect_field_value %}
-                  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                  {% endif %}
-                  <button class="btn btn-outline-danger" type="submit">
-                    Logout</button>
-                </form>
-
-                {% endif %}
-
-
-
-              </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="d-flex align-items-center">
+                <span>@{{ request.user }}</span> <i class="bi bi-chevron-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end text-center mx-auto">
+                <li class="mr-auto">
+                    <a href="#">{{ request.user.email }}</a>
+                </li>
+                <li class="mx-auto">
+                    <a style="margin-bottom: 4px;" href="{% url 'account_change_password' %}"><i>Alterar senha</i></a>
+                </li>
+                <li class="mx-auto">
+                    {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'account_logout' %}">
+                        {% csrf_token %}
+                        {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                        {% endif %}
+                        <button class="btn btn-outline-danger" type="submit">Logout</button>
+                    </form>
+                    {% endif %}
+                </li>
             </ul>
-          </li>
-          <li>
-
-
-
-
-          </li>
-        </ul>
-
+        </li>
+        
+        
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>

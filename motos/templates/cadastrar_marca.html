@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block center %}
 
 <style>
-    body {
-        margin-top: 100px;
-    }
 
+    #breadcrumbs {
+        background: #f3f5fa;
+        padding: 20px 0;
+    
+    }
 
     .form-group {
         margin-bottom: 20px;
@@ -35,9 +37,21 @@
     }
 </style>
 
-<body class="bg-light">
+<body>
 
-    <div class="container mt-5">
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+  
+          <ol>
+            <li><a href="{% url 'core:index' %}">Início</a></li>
+            <li><a href="{% url 'motos:cadastrar_moto' %}">Cadastrar</a></li>
+            <li>Cadastrar Marca</li>
+          </ol>
+        </div>
+      </section>
+      <br>
+
+    <div class="container">
         <h1 class="text-center mb-4">Cadastrar Nova Marca</h1>
         <hr>
         <form method="post">

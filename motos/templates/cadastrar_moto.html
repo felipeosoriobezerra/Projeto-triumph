@@ -3,10 +3,11 @@
 {% block center %}
 
 <style>
-    body {
-        background-color: #f8f9fa;
-        color: #495057;
-        margin-top: 100px;
+
+    #breadcrumbs {
+        background: #f3f5fa;
+        padding: 20px 0;
+    
     }
 
     h1 {
@@ -76,6 +77,18 @@
 </style>
 
 <body>
+    
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+  
+          <ol>
+            <li><a href="{% url 'core:index' %}">Início</a></li>
+            <li>Cadastrar</li>
+          </ol>
+        </div>
+      </section>
+      <br>
+
     <h1>Cadastrar Nova Moto</h1>
     <a href="{% url 'motos:cadastrar_marca' %}" class="b">Cadastre a marca</a>
     <hr>

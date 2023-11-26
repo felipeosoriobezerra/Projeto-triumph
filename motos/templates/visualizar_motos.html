@@ -1,15 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block center %}
 
 <style>
 
-  body {
-        color: #495057;
-    }
-
-  section {
-    display: flex;
-    justify-content: center;
-  }
+#breadcrumbs {
+  background-color: #f3f5fa;
+  padding: 20px 0;
+}
 
   h1 {
     text-align: center;
@@ -17,11 +15,20 @@
 
 </style>
 
-{% block center %}
-  
-<section>
+<body>
+
+<section id="breadcrumbs" class="breadcrumbs">
   <div class="container">
-    <div class="py-5">
+
+    <ol>
+      <li><a href="{% url 'core:index' %}">Início</a></li>
+      <li>Cadastros</li>
+    </ol>
+  </div>
+</section>
+  
+  <div class="container">
+    <div class="py-4">
       <div class="text-center mb-5">
         <h1>Lista de Cadastros</h1>
         <hr>
@@ -110,6 +117,7 @@
 
     </div>
   </div>
-</section>
+
+</body>
 
 {% endblock %}
