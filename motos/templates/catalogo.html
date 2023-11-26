@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 {% block center %}
 
 <style>
@@ -64,6 +65,7 @@
 
   .card {
     height: 100%;
+    
   }
 
 </style>
@@ -76,6 +78,7 @@
     <div class="row mt-4">
       {% for moto in object_list %}
       <div style="margin-bottom: 30px;" class="col-md-3">
+
         <div class="card">
           <img src="{{ moto.imagem_1.url }}" class="card-img-top" alt="{{ moto.modelo }}">
           <div class="card-body">
@@ -86,6 +89,7 @@
             <small>Preço: R$ {{ moto.preco }}</small>
             <br>
           </div>
+          <a class="btn btn-outline-dark mt-auto" href="{% url 'motos:detalhar_motos' moto.id %}">Saiba +</a>
         </div>
       </div>
       {% endfor %}

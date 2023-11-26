@@ -16,3 +16,4 @@ mode.addEventListener('click', () => {
 
     form.classList.remove('dark');
 });
+

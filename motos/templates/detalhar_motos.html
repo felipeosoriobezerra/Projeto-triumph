@@ -1,4 +1,77 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block center %}
+<main id="main">
+
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="http://127.0.0.1:8000/">Início</a></li>
+          <li>Detalhes</li>
+        </ol>
+        <h2>Especificações da moto</h2>
+
+      </div>
+    </section>
+
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+
+                <div class="swiper-slide">
+                  <img src="{{ moto.imagem_1.url }}" alt="">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="{{ moto.imagem_2.url }}" alt="">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="{{ moto.imagem_3.url }}" alt="">
+                </div>
+
+                <div class="swiper-slide">
+                    <img src="{{ moto.imagem_4.url }}" alt="">
+                  </div>
+
+                <div class="swiper-slide">
+                    <img src="{{ moto.imagem_5.url }}" alt="">
+                  </div>
+
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info">
+              <h3>Ficha Técnica</h3>
+              <ul>
+                <li><strong>Modelo</strong>: {{ moto.modelo }}</li>
+                <li><strong>Marca</strong>: {{ moto.marca }}</li>
+                <li><strong>Ano de fabricação</strong>: {{ moto.ano }}</li>
+                <li><strong>Project URL</strong>: {{ moto.preco }}</a></li>
+              </ul>
+            </div>
+            <div class="portfolio-description">
+              <h2>Descrição Completa</h2>
+              <p>
+                {{ moto.desc }}
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
 
     {% endblock %}

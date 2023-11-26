@@ -21,6 +21,7 @@ class MotoListView(generic.ListView):
     model = Moto
     template_name = 'catalogo.html'
     paginate_by = 16
+   
 
 class Moto2ListView(FuncionarioPermission, generic.ListView):
     model = Moto
