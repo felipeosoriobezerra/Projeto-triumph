@@ -4,6 +4,42 @@
 
 <style>
 
+.title-page {
+  text-align: center;
+}
+
+.title-page h1 {
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  color: #37517e;
+}
+
+.title-page h1::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 120px;
+  height: 1px;
+  background: #ddd;
+  bottom: 1px;
+  left: calc(50% - 60px);
+}
+
+.title-page h1::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: #47b2e4;
+  bottom: 0;
+  left: calc(50% - 20px);
+}
+
 #breadcrumbs {
   background-color: #f3f5fa;
   padding: 20px 0;
@@ -15,7 +51,7 @@
   }
 
   .img-link:hover .card-img-top {
-    filter: blur(5px); /* Ajuste o valor conforme necessário para o efeito desejado */
+    filter: blur(5px);
   }
 
   .img-link {
@@ -54,7 +90,9 @@
     }
 
     .form-group {
-        margin-right: 20px;
+        margin-right: 15px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
     .filter-label {
@@ -66,12 +104,14 @@
     }
 
     .filter-button {
-        padding: 6px 10px;
+        margin-left: 5px;
         background-color: #007bff;
         color: #fff;
         border: none;
         cursor: pointer;
         align-self: flex-end;
+        margin-bottom: 10px;
+        height: 38px;
     }
 
   .card {
@@ -147,8 +187,9 @@
   </section>
 
   <div class="container">
-    <h1 class="text-center mt-4">Coleção Triumph</h1>
-    <hr>
+    <div class = "title-page">
+    <h1 style="margin-top: 60px;" class="text-center">Coleção Triumph</h1>
+  </div>
     
     <div class="form-container">
       <form method="get" action="{% url 'motos:catalogo' %}" class="filter-form">

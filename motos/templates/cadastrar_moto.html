@@ -4,14 +4,23 @@
 
 <style>
 
+.title-page {
+  text-align: center;
+}
+
+.title-page h1 {
+  margin-top: 25px;
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  color: #37517e;
+}
+
     #breadcrumbs {
         background: #f3f5fa;
         padding: 20px 0;
     
-    }
-
-    h1 {
-        text-align: center;
     }
 
     form {
@@ -20,7 +29,7 @@
         padding: 20px;
         background-color: #ffffff;
         border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     label {
@@ -60,15 +69,9 @@
         text-align: center;
         color: black;
         text-decoration: none;
-        margin-top: 15px;
         margin-bottom: 15px;
     }
 
-
-    hr {
-        margin-right: 120px;
-        margin-left: 120px;
-    }
 
     input[type="reset"] {
     display: none;
@@ -88,11 +91,13 @@
         </div>
       </section>
       <br>
-
-    <h1>Cadastrar Nova Moto</h1>
-    <a href="{% url 'motos:cadastrar_marca' %}" class="b">Cadastre a marca</a>
-    <hr>
-    <form method="post" enctype="multipart/form-data">
+ 
+    <form style="margin-top: 20px;" method="post" enctype="multipart/form-data">
+        <div class="container">
+        <div class="title-page">
+            <h1>Cadastrar Nova Moto</h1>
+            </div>
+            <a href="{% url 'motos:cadastrar_marca' %}" class="b">Cadastre a Marca</a>
         {% csrf_token %}
         {% if form.errors %}
         <div class="alert alert-danger">
@@ -156,6 +161,7 @@
 
         <button type="submit">Salvar</button>
     </form>
+</div>
     <br>
 </body>
 </html>

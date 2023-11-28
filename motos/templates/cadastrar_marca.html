@@ -4,6 +4,20 @@
 
 <style>
 
+.title-page {
+  text-align: center;
+}
+
+.title-page h1 {
+  margin-top: 25px;
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  color: #37517e;
+}
+
+
     #breadcrumbs {
         background: #f3f5fa;
         padding: 20px 0;
@@ -52,12 +66,14 @@
       <br>
 
     <div class="container">
-        <h1 class="text-center mb-4">Cadastrar Nova Marca</h1>
-        <hr>
+        <div class="title-page">
+        <h1>Cadastrar Nova Marca</h1>
+    </div>
+
         <form method="post">
             {% csrf_token %}
             <div class="form-group">
-                <label for="{{ form.nome.id_for_label }}">Nome da Marca</label>
+                <label for="{{ form.nome.id_for_label }}">Nome da Marca:</label>
                 {{ form.nome }}
             </div>
 

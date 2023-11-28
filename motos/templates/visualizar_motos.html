@@ -4,6 +4,42 @@
 
 <style>
 
+.title-page {
+  text-align: center;
+}
+
+.title-page h1 {
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  color: #37517e;
+}
+
+.title-page h1::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 120px;
+  height: 1px;
+  background: #ddd;
+  bottom: 1px;
+  left: calc(50% - 60px);
+}
+
+.title-page h1::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: #47b2e4;
+  bottom: 0;
+  left: calc(50% - 20px);
+}
+
 #breadcrumbs {
   background-color: #f3f5fa;
   padding: 20px 0;
@@ -28,10 +64,8 @@
 </section>
   
   <div class="container">
-    <div class="py-4">
-      <div class="text-center mb-5">
-        <h1>Lista de Cadastros</h1>
-        <hr>
+      <div class="title-page">
+        <h1 style="margin-top: 60px;">Lista de Cadastros</h1>
       </div>
 
       {% if messages %}
