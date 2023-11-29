@@ -75,7 +75,7 @@ class MotoDeleteView(FuncionarioPermission, views.SuccessMessageMixin,generic.De
     success_url = reverse_lazy("motos:visualizar_motos")
 
     def form_valid(self, form):
-        messages.error(self.request, "Cadastro cancelado")
+        messages.error(self.request, "Moto removida")
         return super().form_valid(form)
     
     def test_func(self):
