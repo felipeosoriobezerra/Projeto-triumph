@@ -90,22 +90,31 @@
         <table class="table table-bordered table-fixed">
           <thead class="thead-primary">
             <tr>
-              <th class="text-center" style="width: 25%;">Modelo</th>
-              <th class="text-center" style="width: 25%;">Marca</th>
-              <th class="text-center" style="width: 50%;">Ações</th>
+              <th class="text-center" style="width: 20%;">Imagem</th>
+              <th class="text-center" style="width: 20%;">Modelo</th>
+              <th class="text-center" style="width: 20%;">Marca</th>
+              <th class="text-center" style="width: 20%;">Preço</th>
+              <th class="text-center" style="width: 20%;">Ações</th>
             </tr>
           </thead>
           <tbody>
             {% for moto in object_list %}
             <tr>
+              <td class="text-center"><img style="width: 100px;" src="{{ moto.imagem_1.url }}" alt=""></td>
               <td class="text-center">{{ moto.modelo }}</td>
               <td class="text-center">{{ moto.marca }}</td>
+              <td class="text-center">R${{ moto.preco }}</td>
               <td class="text-center">
-                <a style="margin-right: 20px;" href="{% url 'motos:editar' moto.id %}"
-                  class="btn btn-outline-primary btn-block">Editar</a>
-                <a href="{% url 'motos:remover_motos' moto.id %}" class="btn btn-outline-danger btn-block">Deletar</a>
-              </td>
-            </tr>
+                <a href="{% url 'motos:editar' moto.id %}" class="btn btn-outline-primary btn-block">
+                    <i class="bi bi-pencil"></i>
+                </a>
+                <a href="{% url 'motos:detalhar_motos' moto.id %}" class="btn btn-outline-success btn-block">
+                    <i class="bi bi-info-circle"></i>
+                </a>
+                <a href="{% url 'motos:remover_motos' moto.id %}" class="btn btn-outline-danger btn-block">
+                    <i class="bi bi-trash"></i>
+                </a>
+            </td>
             {% endfor %}
           </tbody>
         </table>

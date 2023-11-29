@@ -3,49 +3,50 @@
 {% block center %}
 
 <style>
+  /* Estilos existentes ... */
 
-.title-page {
-  text-align: center;
-}
+  .title-page {
+    text-align: center;
+  }
 
-.title-page h1 {
-  font-size: 32px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  position: relative;
-  color: #37517e;
-}
+  .title-page h1 {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    color: #37517e;
+  }
 
-.title-page h1::before {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 120px;
-  height: 1px;
-  background: #ddd;
-  bottom: 1px;
-  left: calc(50% - 60px);
-}
+  .title-page h1::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+  }
 
-.title-page h1::after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 40px;
-  height: 3px;
-  background: #47b2e4;
-  bottom: 0;
-  left: calc(50% - 20px);
-}
+  .title-page h1::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #47b2e4;
+    bottom: 0;
+    left: calc(50% - 20px);
+  }
 
-#breadcrumbs {
-  background-color: #f3f5fa;
-  padding: 20px 0;
-}
+  #breadcrumbs {
+    background-color: #f3f5fa;
+    padding: 20px 0;
+  }
 
-.card-img-top {
+  .card-img-top {
     position: relative;
     transition: filter 0.5s;
   }
@@ -55,12 +56,10 @@
   }
 
   .img-link {
-
     position: relative;
     display: inline-block;
-
   }
-  
+
   .overlay {
     position: absolute;
     top: 50%;
@@ -82,51 +81,50 @@
     opacity: 1;
   }
 
-.filter-form {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 10px;
-    }
+  .container-filters {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    margin-top: 40px;
+  }
 
-    .form-group {
-        margin-right: 15px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
+  .filter-form {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .filter-label {
-        margin-right: 10px;
-    }
+  .form-group {
+    margin-bottom: 15px;
+  }
 
-    .filter-select {
-        padding: 6px;
-    }
+  .filter-label {
+    margin-bottom: 5px;
+    display: block;
+  }
 
-    .filter-button {
-        margin-left: 5px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-        align-self: flex-end;
-        margin-bottom: 10px;
-        height: 38px;
-    }
+  .filter-select,
+  .money {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .filter-button {
+    margin-top: 10px;
+    align-self: flex-end;
+  }
 
   .card {
     border: none;
     transition: transform 0.2s, box-shadow 0.2s;
     border-radius: 15px;
     margin-bottom: 20px;
-
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   .card:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-
   }
 
   .card img {
@@ -136,13 +134,11 @@
 
   .card-title {
     font-size: 1rem;
-
     font-weight: bold;
   }
 
   .card-body {
     padding: 10px;
-
   }
 
   .card-footer {
@@ -152,33 +148,30 @@
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     padding: 5px;
-
   }
 
-
-  @media (max-width: 576px) {
-    .category h2 {
-      font-size: 1.5rem;
+  @media (min-width: 576px) {
+    .filter-form {
+      flex-direction: column;
+      align-items: flex-start;
     }
 
-    .card-title {
-      font-size: 0.9rem;
+    .form-group {
+      margin-right: 0;
+      margin-bottom: 0;
+    }
 
+    .filter-button {
+      margin-top: 10px;
+      align-self: flex-start;
     }
   }
-
-  .card {
-    height: 100%;
-    
-  }
-
 </style>
 
 <body>
 
   <section id="breadcrumbs" class="breadcrumbs">
     <div class="container">
-
       <ol>
         <li><a href="{% url 'core:index' %}">Início</a></li>
         <li>Coleção</li>
@@ -186,116 +179,116 @@
     </div>
   </section>
 
-  <div class="container">
-    <div class = "title-page">
-    <h1 style="margin-top: 60px;" class="text-center">Coleção Triumph</h1>
-  </div>
-    
-    <div class="form-container">
-      <form method="get" action="{% url 'motos:catalogo' %}" class="filter-form">
-        <div class="form-group">
-          <label for="modelo" class="filter-label">Filtrar por Modelo:</label>
-          <input type="text" name="modelo" id="modelo" class="form-control" value="{{ request.GET.modelo }}">
-      </div>
-          <div class="form-group">
+  <div class="container-fluid">
+    <div class="row">
+      
+      <div class="col-md-3">
+        <div class="container-filters">
+          <form method="get" action="{% url 'motos:catalogo' %}" class="filter-form">
+            <div class="form-group">
+              <label for="modelo" class="filter-label">Filtrar por Modelo:</label>
+              <input type="text" name="modelo" id="modelo" class="form-control" value="{{ request.GET.modelo }}">
+            </div>
+
+            <div class="form-group">
               <label for="marca" class="filter-label">Filtrar por Marca:</label>
               <select name="marca" id="marca" class="form-control filter-select">
-                  <option value="" {% if not marca_selecionada %}selected{% endif %}>Todas</option>
-                  {% for marca in marcas %}
-                      <option value="{{ marca.id }}" {% if marca.id|slugify == marca_selecionada %}selected{% endif %}>{{ marca.nome }}</option>
-                  {% endfor %}
+                <option value="" {% if not marca_selecionada %}selected{% endif %}>Todas</option>
+                {% for marca in marcas %}
+                <option value="{{ marca.id }}" {% if marca.id|slugify == marca_selecionada %}selected{% endif %}>{{ marca.nome }}</option>
+                {% endfor %}
               </select>
-          </div>
-  
-          <div class="form-group">
+            </div>
+
+            <div class="form-group">
               <label for="preco_min" class="filter-label">Preço Mínimo:</label>
               <div class="input-group">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text">R$</span>
-                  </div>
-                  <input type="text" name="preco_min" id="preco_min" class="form-control money" value="{{ request.GET.preco_min }}">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">R$</span>
+                </div>
+                <input type="text" name="preco_min" id="preco_min" class="form-control money" value="{{ request.GET.preco_min }}">
               </div>
-          </div>
-  
-          <div class="form-group">
+            </div>
+
+            <div class="form-group">
               <label for="preco_max" class="filter-label">Preço Máximo:</label>
               <div class="input-group">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text">R$</span>
-                  </div>
-                  <input type="text" name="preco_max" id="preco_max" class="form-control money" value="{{ request.GET.preco_max }}">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">R$</span>
+                </div>
+                <input type="text" name="preco_max" id="preco_max" class="form-control money" value="{{ request.GET.preco_max }}">
               </div>
-          </div>
-  
-          <button type="submit" class="btn btn-primary filter-button">Filtrar</button>
-      </form>
-  </div>
-  
+            </div>
 
-    <div class="row mt-4">
-      {% for moto in object_list %}
-      <div style="margin-bottom: 30px;" class="col-md-3">
-
-        <div class="card">
-          <a href="{% url 'motos:detalhar_motos' moto.id %}" class="img-link">
-            <img src="{{ moto.imagem_1.url }}" class="card-img-top" alt="{{ moto.modelo }}">
-            <div class="overlay">Detalhar</div>
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">{{ moto.modelo }}</h5>
-            <p style="font-size: 12px;" class="card-text text-uppercase font-weight-bold"><strong><i>{{ moto.marca }}</i></strong></p>
-          </div>
-          <div class="card-footer">
-            <small>Preço: R$ {{ moto.preco }}</small>
-            <br>
-          </div>
+            <button type="submit" class="btn btn-primary filter-button">Filtrar</button>
+          </form>
         </div>
       </div>
-      {% endfor %}
+
+     
+      <div class="col-md-9">
+        <div class="title-page">
+          <h1 style="margin-top: 60px;" class="text-center">Coleção Triumph</h1>
+        </div>
+
+        <div class="row mt-4">
+          {% for moto in object_list %}
+          <div style="margin-bottom: 30px;" class="col-md-3">
+            <div class="card">
+              <a href="{% url 'motos:detalhar_motos' moto.id %}" class="img-link">
+                <img src="{{ moto.imagem_1.url }}" class="card-img-top" alt="{{ moto.modelo }}">
+                <div class="overlay">Detalhar</div>
+              </a>
+              <div class="card-body">
+                <h5 class="card-title">{{ moto.modelo }}</h5>
+                <p style="font-size: 12px;" class="card-text text-uppercase font-weight-bold"><strong><i>{{ moto.marca }}</i></strong></p>
+              </div>
+              <div class="card-footer">
+                <small>Preço: R$ {{ moto.preco }}</small>
+                <br>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        {% if page_obj.has_other_pages %}
+        <nav>
+          <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page=1" aria-label="Começo">
+                <span aria-hidden="true">&laquo;&laquo;</span>
+              </a>
+            </li>
+            {% endif %}
+            {% for page_number in page_obj.paginator.page_range %}
+            {% if page_number <= page_obj.number|add:3 and page_number >= page_obj.number|add:-3 %}
+            {% if page_obj.number == page_number %}
+            <li class="page-item active">
+              <span class="page-link">{{ page_number }}</span>
+            </li>
+            {% else %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+            </li>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Final">
+                <span aria-hidden="true">&raquo;&raquo;</span>
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+        {% endif %}
+      </div>
     </div>
-    
   </div>
 
-
-
-  {% if page_obj.has_other_pages %}
-  <nav>
-    <ul class="pagination justify-content-center">
-
-      {% if page_obj.has_previous %}
-      <li class="page-item">
-        <a class="page-link" href="?page=1" aria-label="Começo">
-          <span aria-hidden="true">&laquo;&laquo;</span>
-        </a>
-      </li>
-      {% endif %}
-
-      {% for page_number in page_obj.paginator.page_range %}
-      {% if page_number <= page_obj.number|add:3 and page_number >= page_obj.number|add:-3 %}
-        {% if page_obj.number == page_number %}
-        <li class="page-item active">
-          <span class="page-link">{{ page_number }}</span>
-        </li>
-        {% else %}
-        <li class="page-item">
-          <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
-        </li>
-        {% endif %}
-        {% endif %}
-        {% endfor %}
-
-        {% if page_obj.has_next %}
-        <li class="page-item">
-          <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Final">
-            <span aria-hidden="true">&raquo;&raquo;</span>
-          </a>
-        </li>
-        {% endif %}
-
-    </ul>
-  </nav>
-  {% endif %}
-  <br>
 </body>
 </html>
 

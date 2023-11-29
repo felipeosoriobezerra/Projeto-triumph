@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block center %}
 
 <style>
@@ -84,14 +85,20 @@
 
     <div class="container">
         <div class="title-page">
-        <h1 style="margin-top: 60px;">Lista de Usuários</h1>
+        <h1 style="margin-top: 60px;">Usuários do site</h1>
     </div>
 
-        <table class="table table-striped mt-3">
-            <thead class="thead-primary">
+
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-light table-striped ">
+
+            <thead class="thead-dark">
+
+            
                 <tr>
-                    <th>Nome</th>
                     <th>Email</th>
+                    <th>Nome</th>
                     <th>Grupo Atual</th>
                     <th>Ações</th>
                 </tr>
@@ -99,30 +106,30 @@
             <tbody>
                 {% for object in object_list %}
                 <tr>
-                    <td>{{ object.username }}</td>
                     <td>{{ object.email }}</td>
+                    <td>{{ object.username }}</td>
                     <td>
                         {% for group in object.groups.all %}
-                           <p>Este usuário é um Funcionário.</p>
+                           <p>Funcionário</p>
                         {% empty %}
                             {% if object.is_superuser %}
-                                <p>Este usuário é um Administrador.</p>
+                                <p>Administrador</p>
                             {% else %}
-                                <p>Não pertence a nenhum grupo.</p>
+                                <p>Usuário Comum</p>
                             {% endif %}
                         {% endfor %}
                     </td>
                         
                     <td>
-                        <div class="btn-group">
-                            <a href="{% url 'users:delete_users' object.id %}" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash"></i> Excluir
+                        
+                            <a href="{% url 'users:delete_users' object.id %}" class="btn btn-outline-danger btn-block">
+                                <i class="bi bi-trash"></i>
                             </a>
                             {% if not object.groups.exists %}
                             <form method="post" action="{% url 'users:atualizar_grupo_funcionario' object.id %}" class="d-inline">
                                 {% csrf_token %}
-                                <button type="submit" class="btn btn-success btn-sm">
-                                    Tornar Funcionário
+                                <button type="submit" class="btn btn-outline-primary btn-block">
+                                    <i class="bi bi-person-plus"></i>
                                 </button>
                             </form>
                             {% else %}

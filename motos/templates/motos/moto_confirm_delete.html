@@ -11,20 +11,35 @@
 margin-top: 10px;
         color: #3498db;
         text-decoration: none;
-      }
+}
+
+
+.title-page {
+  text-align: center;
+}
+
+.title-page h1 {
+  margin-top: 25px;
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  color: #37517e;
+}
 </style>
 
-<section class="py-5">
+<section style="margin-top: 90px;" class="py-5">
   <div class="container px-5">
       <div class="bg-light rounded-4 py-5 px-4 px-md-5">
           <div class="text-center mb-5">                
-              <h1 class="fw-bolder">Definir cadastro</h1>
+              <h1 class="fw-bolder">Por favor, confirme a ação.</h1>
           </div>
+
 <div class="text-center mb-5"> 
 
-
-<h3>Por favor, confirme a ação.</h3>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
+  <div class="container">
+  <div class="title-page">
   {% csrf_token %}
     <p>Realmente tem absoluta certeza de que deseja excluir o cadastro "{{ object }}"?</p>
     {{ form }}
