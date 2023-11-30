@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Acesso Negado (403){% endblock %}
+
+{% block center %}
+    <section class="container my-5">
+        <br>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center p-4 rounded shadow-lg bg-light">
+                <h1 class="display-3 text-danger">Acesso Negado (403)</h1>
+                <p class="lead">
+                    {% if exception %}
+                        {{ exception }}
+                    {% else %}
+                        Você não tem permissão para acessar esta página.
+                    {% endif %}
+                </p>
+                <div class="mt-4">
+                    <a class="btn btn-primary" href="{% url 'core:index' %}" role="button">
+                        <i class="fas fa-chevron-left mr-2"></i>Voltar à Página Inicial
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

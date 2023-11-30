@@ -61,19 +61,19 @@
               <a style="color: black;" class="dropdown-item" href="{% url 'account_signup' %}">Cadastrar</a>
             </div>
           </li>
+          <li><a class="nav-link scrollto" href="{% url 'motos:catalogo' %}">Coleção</a></li>
           {% endif %}
           {% if user.is_authenticated %}
-          <li><a class="nav-link scrollto" href="{% url 'core:contato' %}">Contato</a></li>
           <li class="nav-item dropdown">
             <a href="#" class="d-flex align-items-center">
                 <span>@{{ request.user }}</span> <i class="bi bi-chevron-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end text-center mx-auto">
                 <li class="mr-auto">
-                    <a href="#">{{ request.user.email }}</a>
+                    <a style="justify-content: center;" href="#">{{ request.user.email }}</a>
                 </li>
                 <li class="mx-auto">
-                    <a style="margin-bottom: 4px;" href="{% url 'account_change_password' %}"><i>Alterar senha</i></a>
+                    <a style="margin-bottom: 4px; justify-content: center;" href="{% url 'account_change_password' %}"><i>Alterar senha</i></a>
                 </li>
                 <li class="mx-auto">
                     {% if user.is_authenticated %}
@@ -82,13 +82,14 @@
                         {% if redirect_field_value %}
                         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                         {% endif %}
-                        <button class="btn btn-outline-danger" type="submit">Logout</button>
+                        <button style="justify-content: center;" class="btn btn-outline-danger" type="submit">Logout</button>
                     </form>
                     {% endif %}
                 </li>
             </ul>
         </li>
         <li><a class="nav-link scrollto" href="{% url 'motos:catalogo' %}">Coleção</a></li>
+        <li><a class="nav-link scrollto" href="{% url 'core:contato' %}">Contato</a></li>
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <i class="bi bi-list mobile-nav-toggle"></i>

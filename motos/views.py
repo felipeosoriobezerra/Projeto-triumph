@@ -26,8 +26,7 @@ class MotoListView(generic.ListView):
         queryset = super().get_queryset()
         modelo = self.request.GET.get('modelo')
         marca_id = self.request.GET.get('marca', None)
-        preco_min = self.request.GET.get('preco_min')
-        preco_max = self.request.GET.get('preco_max')
+        preco = self.request.GET.get('preco')
 
         if modelo:
             queryset = queryset.filter(modelo__icontains=modelo)
@@ -35,11 +34,8 @@ class MotoListView(generic.ListView):
         if marca_id:
             queryset = queryset.filter(marca_id=marca_id)
 
-        if preco_min:
-            queryset = queryset.filter(preco__gte=preco_min)
-
-        if preco_max:
-            queryset = queryset.filter(preco__lte=preco_max)
+        if preco:
+            queryset = queryset.filter(preco=preco)
 
         return queryset
 
@@ -48,6 +44,11 @@ class MotoListView(generic.ListView):
         context['marcas'] = Marca.objects.all()
         context['marca_selecionada'] = self.request.GET.get('marca', None)
         return context
+    
+    def convert_price(self, price):
+        # Implemente a lógica para converter a string de preço formatada em Decimal
+        # Aqui, estamos removendo '.' e substituindo ',' por '.' antes de converter
+        return Decimal(price.replace('.', '').replace(',', '.'))
 
 class Moto2ListView(FuncionarioPermission, generic.ListView):
     model = Moto
