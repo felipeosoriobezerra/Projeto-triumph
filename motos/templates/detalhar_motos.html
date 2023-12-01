@@ -4,6 +4,16 @@
 
 <style>
 
+.b button[type=submit] {
+  background: #47b2e4;
+  border: 0;
+  padding: 8px 20px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 50px;
+  text-align: center;
+}
+
 .title-page {
   text-align: center;
 }
@@ -53,6 +63,7 @@
   margin-top: 20px;
 }
 
+
 .portfolio-info h3 {
   color: #333;
 }
@@ -79,6 +90,7 @@
 
 .portfolio-description p {
   color: #666;
+  margin-bottom: 30px;
 }
 
 .portfolio-details-slider {
@@ -155,18 +167,27 @@
               <li><strong>Modelo</strong>: {{ moto.modelo }}</li>
               <li><strong>Marca</strong>: {{ moto.marca }}</li>
               <li><strong>Ano de fabricação</strong>: {{ moto.ano }}</li>
-              <li><strong>Preço</strong>: R$ {{ moto.preco }}</li>
+              <li style="font-size: 30px;"><strong>Preço</strong>: R$ {{ moto.preco }}</li>
             </ul>
           </div>
           <div class="portfolio-description">
             <h2>Descrição</h2>
             <p>{{ moto.desc }}</p>
           </div>
-        </div>
-
-      </div>
+          <div class="contact-details col-mt-5">
+            <p style="text-align: center; font-weight: bold; margin-bottom: 5px;">Está interessado?</p>
+            <a href="{% url 'core:contato' %}">
+              <div class="b text-center">
+                <button type="submit">Entre em contato</button>
+              </div>
+            </a>
+          </div>
+          </div>
+          
+          </div>
+          
+          </div>
     </section>
-  </div>
 
 </main>
 
