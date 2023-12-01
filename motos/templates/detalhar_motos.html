@@ -13,28 +13,36 @@
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 20px;
-  color: #333;
+  padding-bottom: 20px;
+  position: relative;
+  color: #37517e;
 }
 
 .title-page h1::before {
   content: "";
+  position: absolute;
   display: block;
-  width: 80px;
+  width: 120px;
+  height: 1px;
+  background: #ddd;
+  bottom: 1px;
+  left: calc(50% - 60px);
+}
+
+.title-page h1::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 40px;
   height: 3px;
   background: #47b2e4;
-  margin: 20px auto;
+  bottom: 0;
+  left: calc(50% - 20px);
 }
 
 #breadcrumbs {
   background-color: #f8f9fa;
   padding: 20px 0;
-}
-
-.portfolio-details-slider img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .portfolio-info {
@@ -73,79 +81,93 @@
   color: #666;
 }
 
+.portfolio-details-slider {
+  margin-bottom: 20px;
+}
+
+.portfolio-details-slider img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media only screen and (max-width: 768px) {
+  .portfolio-details-slider {
+    margin-bottom: 10px;
+  }
+}
+
 </style>
 
 <main id="main">
 
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
-
-        <ol>
-          <li><a href="{% url 'core:index' %}">Início</a></li>
-          <li><a href="{% url 'motos:catalogo' %}">Coleção</a></li>
-          <li>Detalhes</li>
-        </ol>
-      </div>
-    </section>
-    
+  <section id="breadcrumbs" class="breadcrumbs">
     <div class="container">
-      <div class="title-page">
-        <h1>Detalhes da {{ moto.modelo }}</h1>
-      </div>
 
-      <section id="portfolio-details" class="portfolio-details">
-        <div class="row gy-4">
+      <ol>
+        <li><a href="{% url 'core:index' %}">Início</a></li>
+        <li><a href="{% url 'motos:catalogo' %}">Coleção</a></li>
+        <li>Detalhes</li>
+      </ol>
+    </div>
+  </section>
 
-          <div class="col-lg-8">
-            <div class="portfolio-details-slider swiper">
-              <div class="swiper-wrapper align-items-center">
-                <div class="swiper-slide">
-                  <img src="{{ moto.imagem_1.url }}" alt="">
-                </div>
+  <div class="container">
+    <div class="title-page">
+      <h1 style="margin-top: 60px;">Detalhes da {{ moto.modelo }}</h1>
+    </div>
 
-                <div class="swiper-slide">
-                  <img src="{{ moto.imagem_2.url }}" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="{{ moto.imagem_3.url }}" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                    <img src="{{ moto.imagem_4.url }}" alt="">
-                  </div>
-
-                <div class="swiper-slide">
-                    <img src="{{ moto.imagem_5.url }}" alt="">
-                  </div>
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="row gy-4">
+        <div class="col-lg-8">
+          <div class="portfolio-details-slider swiper">
+            <div class="swiper-wrapper align-items-center">
+              <div class="swiper-slide">
+                <img src="{{ moto.imagem_1.url }}" alt="">
               </div>
-              <div class="swiper-pagination"></div>
-            </div>
-          </div>
 
-          <div class="col-lg-4">
-            <div class="portfolio-info">
-              <h3>Ficha Técnica</h3>
-              <ul>
-                <li><strong>Modelo</strong>: {{ moto.modelo }}</li>
-                <li><strong>Marca</strong>: {{ moto.marca }}</li>
-                <li><strong>Ano de fabricação</strong>: {{ moto.ano }}</li>
-                <li><strong>Preço</strong>: R$ {{ moto.preco }}</li>
-              </ul>
-            </div>
-            <div class="portfolio-description">
-              <h2>Descrição</h2>
-              <p>
-                {{ moto.desc }}
-              </p>
-            </div>
-          </div>
+              <div class="swiper-slide">
+                <img src="{{ moto.imagem_2.url }}" alt="">
+              </div>
 
+              <div class="swiper-slide">
+                <img src="{{ moto.imagem_3.url }}" alt="">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="{{ moto.imagem_4.url }}" alt="">
+              </div>
+
+              <div class="swiper-slide">
+                <img src="{{ moto.imagem_5.url }}" alt="">
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="portfolio-info">
+            <h3>Ficha Técnica</h3>
+            <ul>
+              <li><strong>Modelo</strong>: {{ moto.modelo }}</li>
+              <li><strong>Marca</strong>: {{ moto.marca }}</li>
+              <li><strong>Ano de fabricação</strong>: {{ moto.ano }}</li>
+              <li><strong>Preço</strong>: R$ {{ moto.preco }}</li>
+            </ul>
+          </div>
+          <div class="portfolio-description">
+            <h2>Descrição</h2>
+            <p>{{ moto.desc }}</p>
+          </div>
         </div>
 
       </div>
     </section>
+  </div>
 
-  </main>
+</main>
 
 {% endblock %}

@@ -46,8 +46,6 @@ class MotoListView(generic.ListView):
         return context
     
     def convert_price(self, price):
-        # Implemente a lógica para converter a string de preço formatada em Decimal
-        # Aqui, estamos removendo '.' e substituindo ',' por '.' antes de converter
         return Decimal(price.replace('.', '').replace(',', '.'))
 
 class Moto2ListView(FuncionarioPermission, generic.ListView):
