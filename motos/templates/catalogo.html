@@ -197,14 +197,23 @@
             </div>
 
             <div class="form-group">
-              <label style="margin-bottom: 5px; margin-top: 10px;" for="preco" class="filter-label">Filtrar por Preço:</label>
-              <div class="input-group">
-                <div class="input-group-text">
-                  <span>R$</span>
-                </div>
-                <input type="text" name="preco" id="preco" class="form-control money" value="{{ request.GET.preco }}">
+              <label style="margin-bottom: 5px; margin-top: 10px;" class="filter-label">Ordenar por:</label>
+              <select name="order_by" class="form-control filter-select">
+                  <option value="preco" {% if request.GET.order_by == 'preco' %}selected{% endif %}>Preço (Menor para Maior)</option>
+                  <option value="-preco" {% if request.GET.order_by == '-preco' %}selected{% endif %}>Preço (Maior para Menor)</option>
+                  <!-- Adicione opções adicionais para outros campos de ordenação, se necessário -->
+              </select>
+          </div>
+
+          <div class="form-group">
+            <label style="margin-bottom: 5px; margin-top: 10px;" for="preco" class="filter-label">Filtrar por Preço:</label>
+            <div class="input-group">
+              <div class="input-group-text">
+                <span>R$</span>
               </div>
+              <input type="text" name="preco" id="preco" class="form-control money" value="{{ request.GET.preco }}">
             </div>
+          </div>
 
             <button type="submit" class="btn btn-primary filter-button">Filtrar</button>
           </form>

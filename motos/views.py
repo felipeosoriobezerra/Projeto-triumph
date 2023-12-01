@@ -7,6 +7,7 @@ from django.views import generic
 from django.contrib import messages
 from django.contrib.messages import views
 from users.permissions import *
+from django.db.models import F
     
 class MotoCreateView(FuncionarioPermission, generic.CreateView):
     model = Moto
@@ -36,6 +37,17 @@ class MotoListView(generic.ListView):
 
         if preco:
             queryset = queryset.filter(preco=preco)
+            preco = self.convert_price(preco)
+
+        order_by = self.request.GET.get('order_by', 'preco')  # Adicionado para obter o parâmetro de ordenação
+
+        if order_by.startswith('-'):
+            # Ordenação decrescente
+            order_by_field = order_by[1:]
+            queryset = queryset.order_by(F(order_by_field).desc())
+        else:
+            # Ordenação crescente
+            queryset = queryset.order_by(F(order_by))
 
         return queryset
 
