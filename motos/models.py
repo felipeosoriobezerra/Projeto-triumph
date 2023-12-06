@@ -19,11 +19,11 @@ class Moto(models.Model):
             MaxValueValidator(2025)
         ]
     )
-    imagem_1 = models.ImageField(upload_to='motos/', blank=True, null=True)
-    imagem_2 = models.ImageField(upload_to='motos/', blank=True, null=True)
-    imagem_3 = models.ImageField(upload_to='motos/', blank=True, null=True)
-    imagem_4 = models.ImageField(upload_to='motos/', blank=True, null=True)
-    imagem_5 = models.ImageField(upload_to='motos/', blank=True, null=True)
+    imagem_1 = models.ImageField(upload_to='motos/', blank=False, null=True)
+    imagem_2 = models.ImageField(upload_to='motos/', blank=False, null=True)
+    imagem_3 = models.ImageField(upload_to='motos/', blank=False, null=True)
+    imagem_4 = models.ImageField(upload_to='motos/', blank=False, null=True)
+    imagem_5 = models.ImageField(upload_to='motos/', blank=False, null=True)
 
     def __str__(self):
         return f"{self.marca} {self.modelo} {self.ano}"
