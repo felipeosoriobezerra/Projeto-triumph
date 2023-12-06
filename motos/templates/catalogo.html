@@ -211,7 +211,6 @@
               <select name="order_by" class="form-control filter-select">
                   <option value="preco" {% if request.GET.order_by == 'preco' %}selected{% endif %}>Preço (Menor para Maior)</option>
                   <option value="-preco" {% if request.GET.order_by == '-preco' %}selected{% endif %}>Preço (Maior para Menor)</option>
-                  <!-- Adicione opções adicionais para outros campos de ordenação, se necessário -->
               </select>
           </div>
 
