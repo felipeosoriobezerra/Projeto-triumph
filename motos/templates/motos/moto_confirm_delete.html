@@ -1,57 +1,50 @@
-{% extends 'base.html' %}
-{% block center %}
-
 <style>
 
-.button {
-  color: white;
-  background-color: red;
-}
-.link{
-margin-top: 10px;
-        color: #3498db;
-        text-decoration: none;
-}
+  .modal-header {
+    background-color: #37517e;
+    color: white;
+    border-bottom: 2px solid #47b2e4;
+  }
 
+  .modal-title {
+    font-weight: bold;
+  }
 
-.title-page {
-  text-align: center;
-}
+  .modal-body {
+    color: #37517e;
+  }
 
-.title-page h1 {
-  margin-top: 25px;
-  font-size: 32px;
-  font-weight: bold;
-  text-transform: uppercase;
-  position: relative;
-  color: #37517e;
-}
+  .modal-footer {
+    border-top: 2px solid #47b2e4;
+  }
+
+  .btn-secondary {
+    background-color: #d3d3d3;
+    color: #000;
+  }
+
+  .btn-danger {
+    background-color: #dc3545;
+    color: white;
+  }
 </style>
 
-<section style="margin-top: 90px;" class="py-5">
-  <div class="container px-5">
-      <div class="bg-light rounded-4 py-5 px-4 px-md-5">
-          <div class="text-center mb-5">                
-              <h1 class="fw-bolder">Por favor, confirme a ação.</h1>
-          </div>
-
-<div class="text-center mb-5"> 
-
-<form method="post" enctype="multipart/form-data">
-  <div class="container">
-  <div class="title-page">
+<form method="post" action="{% url 'motos:remover_motos' moto.pk %}">
   {% csrf_token %}
-    <p>Realmente tem absoluta certeza de que deseja excluir o cadastro "{{ object }}"?</p>
-    {{ form }}
-  <button type="submit" class="btn btn-danger">Confirmar</button>
+  <div class="modal fade" id="modalExemplo-{{ moto.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirmação de Exclusão</h5>
+        </div>
+        <div class="modal-body">
+          Deseja Deletar o usuário {{ moto.modelo }}?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="submit" class="btn btn-danger">Deletar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </form>
-<div class="link">
-<a href="{% url 'motos:visualizar_motos' %}" class="forgot-password-link">Voltar para a lista de motos</a>
-</div>
-
-</div>
-</div>
-</div>
-
-</section>
-{% endblock %}

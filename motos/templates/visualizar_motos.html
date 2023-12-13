@@ -111,9 +111,11 @@
                 <a href="{% url 'motos:detalhar_motos' moto.id %}" class="btn btn-outline-success btn-block">
                     <i class="bi bi-info-circle"></i>
                 </a>
-                <a href="{% url 'motos:remover_motos' moto.id %}" class="btn btn-outline-danger btn-block">
+                
+                <a href="{% url 'motos:remover_motos' moto.id %}" class="btn btn-outline-danger btn-block" data-toggle="modal" data-target="#modalExemplo-{{ moto.id }}">
                     <i class="bi bi-trash"></i>
                 </a>
+                {% include "motos/moto_confirm_delete.html" %}
             </td>
             {% endfor %}
           </tbody>
