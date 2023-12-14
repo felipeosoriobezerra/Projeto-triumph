@@ -21,10 +21,16 @@ class SuperuserRequiredMixin(AccessMixin):
 
 User = get_user_model()
 
-class UserDetailView(DetailView):
+class User2DetailView(generic.DetailView):
+    model = User
+    template_name = "detalhe_user.html"
+
+
+class UserDetailView(generic.DetailView):
     model = User
     slug_field = "username"
     slug_url_kwarg = "username"
+    
 
 
 user_detail_view = UserDetailView.as_view()

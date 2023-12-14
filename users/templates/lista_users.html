@@ -57,6 +57,9 @@
     width: 100%;
     margin-bottom: 1rem;
     color: #37517e;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   .table th,
@@ -73,6 +76,7 @@
 
   .table-bordered {
     border: 1px solid #dee2e6;
+    border-radius: 8px;
   }
 
   .table-bordered th,
@@ -84,8 +88,6 @@
   .table-bordered thead td {
     border-bottom-width: 2px;
   }
-  
-
   .btn-group .btn {
     margin-right: 5px;
   }
@@ -119,6 +121,9 @@
     </div>
   </section>
 
+
+
+  
   <div class="container">
     <div class="title-page">
       <h1 style="margin-top: 60px;">Usuários do site</h1>
@@ -154,28 +159,9 @@
             </td>
 
             <td>
-              <a href="{% url 'users:delete_users' object.id %}" class="btn btn-outline-danger btn-block">
-                <i class="bi bi-trash"></i>
-              </a>
-              {% if not object.groups.exists %}
-              <form method="post" action="{% url 'users:atualizar_grupo_funcionario' object.id %}" class="d-inline">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-outline-primary btn-block">
-                  <i class="bi bi-person-add"></i>
-                </button>
-              </form>
-              {% else %}
-              {% for group in object.groups.all %}
-              {% if group.name == "Funcionário" %}
-              <form method="post" action="{% url 'users:remover_grupo_funcionario' object.id %}" class="d-inline">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-danger btn-block">
-                  <i class="bi bi-person-dash"></i>
-                </button>
-              </form>
-              {% endif %}
-              {% endfor %}
-              {% endif %}
+              <a href="{% url 'users:detalhe_user' object.id %}" class="btn btn-outline-primary btn-block">
+                <i class="bi bi-info-circle"></i>
+              
             </td>
           </tr>
           {% empty %}

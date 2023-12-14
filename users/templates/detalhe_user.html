@@ -1,0 +1,258 @@
+{% extends "base.html" %}
+{% load static %}
+{% block center %}
+
+<style>
+
+
+body {
+    background: #37517e;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+
+
+.profile-button:hover {
+    background: #37517e;
+}
+
+.profile-button:focus {
+    background: #37517e;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #37517e;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #37517e;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #37517e;
+}
+  .title-page {
+    text-align: center;
+  }
+
+  .title-page h1 {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    position: relative;
+    color: #37517e;
+  }
+
+  .title-page h1::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+  }
+
+  .title-page h1::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #47b2e4;
+    bottom: 0;
+    left: calc(50% - 20px);
+  }
+
+  #breadcrumbs {
+    background-color: #f3f5fa;
+    padding: 20px 0;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .table-responsive {
+    margin-top: 30px;
+  }
+
+  .table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #37517e;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .table th,
+  .table td {
+    padding: 1rem;
+    text-align: left;
+    border-top: 1px solid #dee2e6;
+  }
+
+  .thead-dark th {
+    color: #fff;
+    background-color: #37517e;
+  }
+
+  .table-bordered {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+  }
+
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #dee2e6;
+  }
+
+  .table-bordered thead th,
+  .table-bordered thead td {
+    border-bottom-width: 2px;
+  }
+  
+
+  .btn-group .btn {
+    margin-right: 5px;
+  }
+
+  @media (max-width: 576px) {
+    body {
+      margin-top: 100px;
+    }
+
+    h1 {
+      font-size: 1.5em;
+      display: block;
+      justify-content: center;
+    }
+
+    .btn-group .btn {
+      margin-bottom: 5px;
+    }
+  }
+
+</style>
+
+<body>
+
+  <section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+      <ol>
+        <li><a href="{% url 'core:index' %}">Início</a></li>
+        <li><a href="{% url 'users:lista_usuarios' %}">Usuários</a></li>
+        <li>Dados do Usuário</li>
+      </ol>
+    </div>
+  </section>
+
+ 
+
+
+
+
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">{{ object.username }}</span><span> </span></div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h3 class="text-right">Dados do Usuário</h3>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6"><label class="labels">Nome</label><h5 class="text-right">{{ object.username }}</h5></div>
+                        <div class="col-md-6"><label class="labels">Sobrenome</label><h5 class="text-right">......................</h5></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Email</label><h5 class="text-right">{{ object.email }}</h5></div>
+                        <div class="col-md-12"><label class="labels">Telefone</label><h5 class="text-right">......................</h5></div>
+                        <div class="col-md-12"><label class="labels">Idade</label><h5 class="text-right">......................</h5></div>
+                        <div class="col-md-12"><label class="labels">Sexo</label><h5 class="text-right">......................</h5></div>
+                        
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6"><label class="labels">Pais</label><h5 class="text-right">Brasil</h5></div>
+                        <div class="col-md-6"><label class="labels">Estado</label><h5 class="text-right">Rio Grande do Norte</h5></div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 py-5">
+
+                   
+                       
+
+
+
+                    </span></div><br>
+                    <div class="col-md-12"><label class="labels">Cargo/Função</label><h4 class="text-right">{% for group in object.groups.all %}
+                        {% if group.name == "Funcionário" %}
+                          <p>Funcionário</p>
+                        {% endif %}
+                      {% empty %}
+                        {% if object.is_superuser %}
+                          <p>Administrador</p>
+                        {% else %}
+                          <p>Usuário Comum</p>
+                        {% endif %}   
+                      {% endfor %}</h4></div> <br>
+                    <div class="col-md-12"><label class="labels">Gerenciamento</label>
+                    
+                    <div class="text-right">
+                        <a href="{% url 'users:delete_users' object.id %}" class="btn btn-outline-danger btn-block">
+                            <i class="bi bi-trash"></i>
+                          </a>
+                          {% if not object.groups.exists %}
+                        <form method="post" action="{% url 'users:atualizar_grupo_funcionario' object.id %}" class="d-inline">
+                          {% csrf_token %}
+                          <button type="submit" class="btn btn-outline-primary btn-block">
+                            <i class="bi bi-person-add"></i>
+                          </button>
+                        </form>
+                      {% else %}
+                        {% for group in object.groups.all %}
+                          {% if group.name == "Funcionário" %}
+                            <form method="post" action="{% url 'users:remover_grupo_funcionario' object.id %}" class="d-inline">
+                              {% csrf_token %}
+                              <button type="submit" class="btn btn-danger btn-block">
+                                <i class="bi bi-person-dash"></i>
+                              </button>
+                            </form>
+                          {% endif %}
+                        {% endfor %}
+                      {% endif %}  
+                    </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    </div>
+<br>
+{% endblock %}

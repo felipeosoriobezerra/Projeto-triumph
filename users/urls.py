@@ -7,6 +7,7 @@ app_name = "users"
 urlpatterns = [
     path("redirect/", view=user_redirect_view, name="redirect"),
     path("update/", view=user_update_view, name="update"),
+    path('detalhe_user/<int:pk>/', User2DetailView.as_view(), name='detalhe_user'),
     path('lista_users/', views.UsersListView.as_view(), name='lista_usuarios'),
     path('create_users/', views.UserCreateView.as_view(), name='create_users'),
     path('delete_users/<int:pk>/', views.UserDeleteView.as_view(), name='delete_users'),
