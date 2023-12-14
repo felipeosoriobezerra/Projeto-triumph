@@ -221,9 +221,11 @@ body {
                     <div class="col-md-12"><label class="labels">Gerenciamento</label>
                     
                     <div class="text-right">
-                        <a href="{% url 'users:delete_users' object.id %}" class="btn btn-outline-danger btn-block">
+                      <div class="d-flex align-items-center">
+                        <a style="margin-right: 5px;" href="{% url 'users:delete_users' object.id %}" class="btn btn-outline-danger btn-block" data-toggle="modal" data-target="#modalExemplo1-{{ object.id }}">
                             <i class="bi bi-trash"></i>
                           </a>
+                          {% include "users/user_confirm_delete.html" %}
                           {% if not object.groups.exists %}
                         <form method="post" action="{% url 'users:atualizar_grupo_funcionario' object.id %}" class="d-inline">
                           {% csrf_token %}
@@ -231,6 +233,7 @@ body {
                             <i class="bi bi-person-add"></i>
                           </button>
                         </form>
+                        </div>
                       {% else %}
                         {% for group in object.groups.all %}
                           {% if group.name == "Funcionário" %}

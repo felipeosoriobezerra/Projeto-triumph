@@ -21,7 +21,7 @@ class SuperuserRequiredMixin(AccessMixin):
 
 User = get_user_model()
 
-class User2DetailView(generic.DetailView):
+class User2DetailView(SuperuserRequiredMixin, generic.DetailView):
     model = User
     template_name = "detalhe_user.html"
 
