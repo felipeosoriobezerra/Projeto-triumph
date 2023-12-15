@@ -24,9 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-bz#hp_t3%^ho$#2i!)qspmd5*tb5@va_3^z8130kem_b9zp3gk"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
+
+CSRF_TRUSTED_ORIGINS = ['http://localhost:83']
 
 
 MESSAGE_TAGS = {
@@ -112,8 +114,12 @@ ACCOUUNT_EMAIL_VERIFICATION = 'none'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    "ENGINE": "django.db.backends.postgresql",
+    "NAME": "postgres",
+    "USER": "postgres",
+    "PASSWORD": "aluno@pf",
+    "HOST": "postgres",
+    "PORT": "5432",
     }
 }
 
