@@ -25,7 +25,7 @@ services:
       - static_volume:/home/app/staticfiles
       - media_volume:/home/app/media
     ports:
-      - 83:80
+      - 85:80
     depends_on:
       - django
 

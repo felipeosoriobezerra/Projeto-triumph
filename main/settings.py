@@ -26,9 +26,9 @@ SECRET_KEY = "django-insecure-bz#hp_t3%^ho$#2i!)qspmd5*tb5@va_3^z8130kem_b9zp3gk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:83']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:85','http://127.0.0.1:85']
 
 
 MESSAGE_TAGS = {
