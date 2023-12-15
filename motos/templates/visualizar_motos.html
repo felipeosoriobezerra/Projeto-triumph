@@ -5,49 +5,131 @@
 <style>
 
 .title-page {
-  text-align: center;
-}
+    text-align: center;
+  }
 
-.title-page h1 {
-  font-size: 32px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  position: relative;
-  color: #37517e;
-}
+  .title-page h1 {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    position: relative;
+    color: #37517e;
+  }
 
-.title-page h1::before {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 120px;
-  height: 1px;
-  background: #ddd;
-  bottom: 1px;
-  left: calc(50% - 60px);
-}
+  .title-page h1::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+  }
 
-.title-page h1::after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 40px;
-  height: 3px;
-  background: #47b2e4;
-  bottom: 0;
-  left: calc(50% - 20px);
-}
+  .title-page h1::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #47b2e4;
+    bottom: 0;
+    left: calc(50% - 20px);
+  }
 
-#breadcrumbs {
-  background-color: #f3f5fa;
-  padding: 20px 0;
-}
+  #breadcrumbs {
+    background-color: #f3f5fa;
+    padding: 20px 0;
+  }
 
   h1 {
     text-align: center;
   }
+
+  .table-responsive {
+    margin-top: 30px;
+  }
+
+  .table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #4078da;
+    background-color: #fff;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+
+  .quadra-azul {
+      background-color: #004080; 
+      padding: 10px;
+      border-radius: 10px;
+      color: #fff; 
+      text-align: center; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    }
+
+    h5 {
+      margin-bottom: 1px; 
+    }
+
+    p {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+
+  .table th,
+  .table td {
+    padding: 1rem;
+    text-align: left;
+    border-top: 1px solid #dee2e6;
+  }
+
+  .thead-dark th {
+    color: #fff;
+    background-color: #002056;
+  }
+
+  .table-bordered {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+  }
+
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #dee2e6;
+  }
+
+  .table-bordered thead th,
+  .table-bordered thead td {
+    border-bottom-width: 2px;
+  }
+  .btn-group .btn {
+    margin-right: 5px;
+  }
+
+  @media (max-width: 576px) {
+    body {
+      margin-top: 100px;
+    }
+
+    h1 {
+      font-size: 1.5em;
+      display: block;
+      justify-content: center;
+    }
+
+    .btn-group .btn {
+      margin-bottom: 5px;
+    }
+  }
+
+
+
 
 </style>
 
@@ -66,7 +148,14 @@
   <div class="container">
       <div class="title-page">
         <h1 style="margin-top: 60px;">Lista de Cadastros</h1>
+        <div class="container">
+          <div class="quadra-azul">
+            <h5>Número de Motos</h5>
+            <p>{{ to_motos }}</p>
+          </div>
+        </div>
       </div>
+      
 
       {% if messages %}
       <div class="messages">
@@ -86,9 +175,9 @@
       </div>
       {% endif %}
 
-      <div class="table-responsive">
-        <table class="table table-bordered table-fixed">
-          <thead class="thead-primary">
+      <div class="table-responsive" style="border-radius: 20px;">
+        <table class="table table-bordered table-fixed" >
+          <thead class="thead-dark">
             <tr>
               <th class="text-center" style="width: 20%;">Imagem</th>
               <th class="text-center" style="width: 20%;">Modelo</th>
@@ -162,7 +251,9 @@
 
     </div>
   </div>
-
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 {% endblock %}

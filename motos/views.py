@@ -65,6 +65,13 @@ class Moto2ListView(FuncionarioPermission, generic.ListView):
     template_name = "visualizar_motos.html"
     paginate_by = 6
 
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['to_motos'] = Moto.objects.count()
+        return context
+
+
     def test_func(self):
         return self.request.user.is_superuser or self.request.user.groups.filter(name="Funcionário").exists()
 
